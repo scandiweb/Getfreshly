@@ -12,3 +12,24 @@ export interface TokenResponse {
     message: string;
   };
 }
+
+export interface FacebookAdInsights {
+  spend: number;
+  impressions: number;
+  clicks: number;
+  ctr: number;
+  cpm: number;
+  cpc: number;
+}
+
+export interface FacebookMetrics {
+  totalSpend: number;
+  impressions: number;
+  clicks: number;
+  ctr: number;
+  activeCampaigns: number;
+  activeAdSets: number;
+  activeAds: number;
+  hasData: boolean;
+  error?: string;
+}

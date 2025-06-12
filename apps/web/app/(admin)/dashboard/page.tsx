@@ -1,9 +1,14 @@
 import { BreadcrumbsConsumer } from '@/consumers/breadcrumbsConsumer';
 import { Breadcrumb } from '@/types/breadcrumbs';
 import { UserService } from '@/services/user.service';
-import { prisma } from '@repo/database';
-import { LinkedAccount } from '@/types/linkedAccounts';
+import { FacebookService } from '@/services/server/facebook.service';
 import PerformanceDashboard from '@/components/dashboard/PerformanceDashboard';
+import { cookies } from 'next/headers';
+import { SelectedAccount } from '@/types/chat';
+import { FacebookMetrics } from '@/types/facebook';
+
+// Cache this page for 1 hour (3600 seconds)
+export const revalidate = 3600;
 
 const breadCrumbs: Breadcrumb[] = [
   {
@@ -15,26 +20,44 @@ const breadCrumbs: Breadcrumb[] = [
 export default async function Page() {
   const userId = await UserService.requireAuth();
 
-  const linkedAccounts = (await prisma.linkedAccount.findMany({
-    where: {
-      userId,
-    },
-    select: {
-      accountName: true,
-      accessToken: true,
-      adAccounts: {
-        select: {
-          accountId: true,
-          accountName: true,
-        },
-      },
-    },
-  })) as LinkedAccount[];
+  // Get selected account from cookie
+  const cookieStore = await cookies();
+  const selectedAccountCookie = cookieStore.get('selected-ad-account');
+
+  let accessToken: string | undefined;
+  let adAccountId: string | undefined;
+  let metaMetrics = {
+    hasData: false,
+    totalSpend: 0,
+    impressions: 0,
+    clicks: 0,
+    ctr: 0,
+    activeCampaigns: 0,
+    activeAdSets: 0,
+    activeAds: 0,
+  };
+
+  if (selectedAccountCookie) {
+    try {
+      const selectedAccount: SelectedAccount = JSON.parse(
+        decodeURIComponent(selectedAccountCookie.value),
+      );
+      accessToken = selectedAccount.accessToken;
+      adAccountId = selectedAccount.accountId;
+
+      metaMetrics = await FacebookService.getMetricsData(
+        accessToken,
+        adAccountId,
+      );
+    } catch (error) {
+      console.error('Error parsing selected account cookie:', error);
+    }
+  }
 
   return (
     <div className="pb-6 space-y-8">
       <BreadcrumbsConsumer breadcrumbs={breadCrumbs} />
-      <PerformanceDashboard />
+      <PerformanceDashboard metaMetrics={metaMetrics} />
     </div>
   );
 }
