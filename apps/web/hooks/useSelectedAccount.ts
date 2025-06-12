@@ -1,9 +1,13 @@
 import { SelectedAccount } from '@/types/chat';
-import { useLocalStorage } from './useLocalStorage';
+import { useCookie } from './useCookie';
 
 export function useSelectedAccount() {
   const [selectedAccount, setSelectedAccount] =
-    useLocalStorage<SelectedAccount | null>('selected-ad-account', null);
+    useCookie<SelectedAccount | null>('selected-ad-account', null, {
+      maxAge: 60 * 60 * 24 * 30, // 30 days
+      path: '/',
+      sameSite: 'lax',
+    });
 
   return {
     selectedAccount,
