@@ -5,7 +5,6 @@ import { FacebookService } from '@/services/server/facebook.service';
 import PerformanceDashboard from '@/components/dashboard/PerformanceDashboard';
 import { cookies } from 'next/headers';
 import { SelectedAccount } from '@/types/chat';
-import { FacebookMetrics } from '@/types/facebook';
 
 // Cache this page for 1 hour (3600 seconds)
 export const revalidate = 3600;
@@ -37,6 +36,8 @@ export default async function Page() {
     activeAds: 0,
   };
 
+  let adPreviews: string[] = [];
+
   if (selectedAccountCookie) {
     try {
       const selectedAccount: SelectedAccount = JSON.parse(
@@ -45,10 +46,22 @@ export default async function Page() {
       accessToken = selectedAccount.accessToken;
       adAccountId = selectedAccount.accountId;
 
-      metaMetrics = await FacebookService.getMetricsData(
-        accessToken,
-        adAccountId,
-      );
+      // Fetch metrics and ad previews in parallel
+      const [metrics, previews] = await Promise.all([
+        FacebookService.getMetricsData(accessToken, adAccountId),
+        FacebookService.getAdPreviews(accessToken, [
+          '6824503105566',
+          '6824503105566',
+          '6824503105566',
+          '6824503105566',
+          '6824503105566',
+          '6824503105566',
+          '6824503105566',
+        ]),
+      ]);
+
+      metaMetrics = metrics;
+      adPreviews = previews;
     } catch (error) {
       console.error('Error parsing selected account cookie:', error);
     }
@@ -57,7 +70,7 @@ export default async function Page() {
   return (
     <div className="pb-6 space-y-8">
       <BreadcrumbsConsumer breadcrumbs={breadCrumbs} />
-      <PerformanceDashboard metaMetrics={metaMetrics} />
+      <PerformanceDashboard metaMetrics={metaMetrics} adPreviews={adPreviews} />
     </div>
   );
 }

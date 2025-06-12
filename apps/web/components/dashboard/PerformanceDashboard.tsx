@@ -5,6 +5,7 @@ import { Button } from '@repo/ui/components/button';
 import { Card, CardContent } from '@repo/ui/components/card';
 import { Settings, RefreshCw } from 'lucide-react';
 import MetricCustomizationDialog from './MetricCustomizationDialog';
+import AdSlider from './AdSlider';
 import { FacebookMetrics } from '@/types/facebook';
 
 export interface Metric {
@@ -17,10 +18,12 @@ export interface Metric {
 
 interface PerformanceDashboardProps {
   metaMetrics?: FacebookMetrics;
+  adPreviews?: string[];
 }
 
 export default function PerformanceDashboard({
   metaMetrics,
+  adPreviews,
 }: PerformanceDashboardProps) {
   const formatNumber = (num: number) => {
     if (num >= 1000000) {
@@ -277,6 +280,15 @@ export default function PerformanceDashboard({
           </Card>
         ))}
       </div>
+
+      {/* Ad Previews Slider */}
+      {adPreviews && adPreviews.length > 0 && (
+        <AdSlider ads={adPreviews} title="Best performing ads" />
+      )}
+
+      {adPreviews && adPreviews.length > 0 && (
+        <AdSlider ads={adPreviews} title="Lowest performing ads" />
+      )}
 
       {/* Customization Dialog */}
       <MetricCustomizationDialog

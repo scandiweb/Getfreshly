@@ -2,7 +2,7 @@ import { FacebookAdInsights, FacebookMetrics } from '@/types/facebook';
 
 export class FacebookService {
   private static readonly GRAPH_API_BASE_URL =
-    'https://graph.facebook.com/v18.0';
+    'https://graph.facebook.com/v23.0';
 
   /**
    * Get ad account insights including total spend
@@ -221,6 +221,65 @@ export class FacebookService {
             ? error.message
             : 'Failed to fetch Facebook data',
       };
+    }
+  }
+
+  /**
+   * Get ad preview data (simplified for now with hardcoded data)
+   */
+  static async getAdPreview(
+    accessToken: string,
+    adId: string,
+  ): Promise<string> {
+    const url = `${this.GRAPH_API_BASE_URL}/${adId}/previews`;
+    const params = new URLSearchParams({
+      access_token: accessToken,
+      ad_format: 'MOBILE_FEED_STANDARD',
+    });
+
+    try {
+      const response = await fetch(`${url}?${params}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(
+          `Facebook API Error: ${errorData.error?.message || response.statusText}`,
+        );
+      }
+
+      const data = await response.json();
+
+      const iframe = data.data[0].body || '';
+      return iframe
+        .replace('height="450"', 'height="550"')
+        .replace('scrolling="yes"', 'scrolling="no"')
+        .replace('style="border: none;"', '');
+    } catch (error) {
+      console.error('Error fetching ad details:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Get multiple ad previews (for the slider)
+   */
+  static async getAdPreviews(
+    accessToken: string,
+    adIds: string[],
+  ): Promise<string[]> {
+    try {
+      const previews = await Promise.all(
+        adIds.map((adId) => this.getAdPreview(accessToken, adId)),
+      );
+      return previews;
+    } catch (error) {
+      console.error('Error fetching ad previews:', error);
+      return [];
     }
   }
 }
