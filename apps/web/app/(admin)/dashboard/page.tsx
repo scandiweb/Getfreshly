@@ -5,6 +5,7 @@ import { FacebookService } from '@/services/server/facebook.service';
 import PerformanceDashboard from '@/components/dashboard/PerformanceDashboard';
 import { cookies } from 'next/headers';
 import { SelectedAccount } from '@/types/chat';
+import AdSlider from '@/components/dashboard/AdSlider';
 
 // Cache this page for 1 hour (3600 seconds)
 export const revalidate = 3600;
@@ -70,7 +71,16 @@ export default async function Page() {
   return (
     <div className="pb-6 space-y-8">
       <BreadcrumbsConsumer breadcrumbs={breadCrumbs} />
-      <PerformanceDashboard metaMetrics={metaMetrics} adPreviews={adPreviews} />
+      <PerformanceDashboard metaMetrics={metaMetrics} />
+
+      {/* Ad Previews Slider */}
+      {adPreviews && adPreviews.length > 0 && (
+        <AdSlider ads={adPreviews} title="Best performing ads" />
+      )}
+
+      {adPreviews && adPreviews.length > 0 && (
+        <AdSlider ads={adPreviews} title="Lowest performing ads" />
+      )}
     </div>
   );
 }

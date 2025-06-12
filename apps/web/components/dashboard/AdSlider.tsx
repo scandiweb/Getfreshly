@@ -30,7 +30,7 @@ export default function AdSlider({
 
   if (!ads || ads.length === 0) {
     return (
-      <div className="space-y-4 my-10">
+      <div className="space-y-4 my-10 px-4">
         <h3 className="text-xl font-semibold text-gray-900">{title}</h3>
         <Card>
           <CardContent className="p-6">
@@ -42,11 +42,10 @@ export default function AdSlider({
   }
 
   return (
-    <div className="space-y-4 my-10">
+    <div className="space-y-4 my-10 px-4">
       <Carousel
         opts={{
           align: 'start',
-          loop: true,
         }}
         className="w-full relative"
       >
