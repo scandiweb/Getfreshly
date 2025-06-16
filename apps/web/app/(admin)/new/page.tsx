@@ -9,11 +9,11 @@ import { LinkedAccount } from '@/types/linkedAccounts';
 const breadCrumbs: Breadcrumb[] = [
   {
     label: 'Chat',
-    link: '/chat',
+    link: '/new',
   },
 ];
 
-export default async function Page() {
+export default async function NewChatPage() {
   const user = await UserService.getCurrentUser();
 
   if (!user) {
