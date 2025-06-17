@@ -1,4 +1,9 @@
-import { FacebookAdInsights, FacebookMetrics } from '@/types/facebook';
+import {
+  FacebookAdInsights,
+  FacebookMetrics,
+  FacebookAdsResponse,
+  AdPerformanceData,
+} from '@/types/facebook';
 
 export class FacebookService {
   private static readonly GRAPH_API_BASE_URL =
@@ -188,7 +193,7 @@ export class FacebookService {
   ): Promise<FacebookMetrics> {
     try {
       // Fetch all data in parallel
-      const [insights, campaigns, adSets, ads] = await Promise.all([
+      const [insights, campaigns, adSets, activeAds] = await Promise.all([
         this.getAdAccountInsights(accessToken, adAccountId, timeRange),
         this.getActiveCampaigns(accessToken, adAccountId),
         this.getActiveAdSets(accessToken, adAccountId),
@@ -203,7 +208,7 @@ export class FacebookService {
         ctr: insights.ctr,
         activeCampaigns: campaigns,
         activeAdSets: adSets,
-        activeAds: ads,
+        activeAds,
       };
     } catch (error) {
       console.error('Error fetching Facebook dashboard data:', error);
@@ -255,10 +260,7 @@ export class FacebookService {
       const data = await response.json();
 
       const iframe = data.data[0].body || '';
-      return iframe
-        .replace('height="450"', 'height="550"')
-        .replace('scrolling="yes"', 'scrolling="no"')
-        .replace('style="border: none;"', '');
+      return iframe.replace('style="border: none;"', '');
     } catch (error) {
       console.error('Error fetching ad details:', error);
       throw error;
@@ -280,6 +282,52 @@ export class FacebookService {
     } catch (error) {
       console.error('Error fetching ad previews:', error);
       return [];
+    }
+  }
+
+  /**
+   * Get ads performance data with insights for analysis
+   */
+  static async getAdsPerformanceData(
+    accessToken: string,
+    adAccountId: string,
+    limit?: number,
+    datePreset: string = 'maximum',
+  ): Promise<AdPerformanceData[]> {
+    const url = `${this.GRAPH_API_BASE_URL}/${adAccountId}/ads`;
+    const fields =
+      'id,name,created_time,insights{impressions,ctr,engagement_rate_ranking}';
+
+    const params = new URLSearchParams({
+      access_token: accessToken,
+      fields,
+      date_preset: datePreset,
+      effective_status: JSON.stringify(['ACTIVE']),
+      ...(limit && { limit: limit.toString() }),
+    });
+
+    try {
+      const response = await fetch(`${url}?${params}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(
+          `Facebook API Error: ${errorData.error?.message || response.statusText}`,
+        );
+      }
+
+      const data: FacebookAdsResponse = await response.json();
+
+      // Return the ads with their performance data
+      return data.data || [];
+    } catch (error) {
+      console.error('Error fetching ads performance data:', error);
+      throw error;
     }
   }
 }

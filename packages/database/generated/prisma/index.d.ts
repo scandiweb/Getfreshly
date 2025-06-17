@@ -28,6 +28,16 @@ export type LinkedAccount = $Result.DefaultSelection<Prisma.$LinkedAccountPayloa
  * 
  */
 export type AdAccount = $Result.DefaultSelection<Prisma.$AdAccountPayload>
+/**
+ * Model AdPerformanceSnapshot
+ * 
+ */
+export type AdPerformanceSnapshot = $Result.DefaultSelection<Prisma.$AdPerformanceSnapshotPayload>
+/**
+ * Model AdPerformanceData
+ * 
+ */
+export type AdPerformanceData = $Result.DefaultSelection<Prisma.$AdPerformanceDataPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -183,6 +193,26 @@ export class PrismaClient<
     * ```
     */
   get adAccount(): Prisma.AdAccountDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.adPerformanceSnapshot`: Exposes CRUD operations for the **AdPerformanceSnapshot** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more AdPerformanceSnapshots
+    * const adPerformanceSnapshots = await prisma.adPerformanceSnapshot.findMany()
+    * ```
+    */
+  get adPerformanceSnapshot(): Prisma.AdPerformanceSnapshotDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.adPerformanceData`: Exposes CRUD operations for the **AdPerformanceData** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more AdPerformanceData
+    * const adPerformanceData = await prisma.adPerformanceData.findMany()
+    * ```
+    */
+  get adPerformanceData(): Prisma.AdPerformanceDataDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -625,7 +655,9 @@ export namespace Prisma {
   export const ModelName: {
     Message: 'Message',
     LinkedAccount: 'LinkedAccount',
-    AdAccount: 'AdAccount'
+    AdAccount: 'AdAccount',
+    AdPerformanceSnapshot: 'AdPerformanceSnapshot',
+    AdPerformanceData: 'AdPerformanceData'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -644,7 +676,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "message" | "linkedAccount" | "adAccount"
+      modelProps: "message" | "linkedAccount" | "adAccount" | "adPerformanceSnapshot" | "adPerformanceData"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -870,6 +902,154 @@ export namespace Prisma {
           }
         }
       }
+      AdPerformanceSnapshot: {
+        payload: Prisma.$AdPerformanceSnapshotPayload<ExtArgs>
+        fields: Prisma.AdPerformanceSnapshotFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AdPerformanceSnapshotFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdPerformanceSnapshotPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AdPerformanceSnapshotFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdPerformanceSnapshotPayload>
+          }
+          findFirst: {
+            args: Prisma.AdPerformanceSnapshotFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdPerformanceSnapshotPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AdPerformanceSnapshotFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdPerformanceSnapshotPayload>
+          }
+          findMany: {
+            args: Prisma.AdPerformanceSnapshotFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdPerformanceSnapshotPayload>[]
+          }
+          create: {
+            args: Prisma.AdPerformanceSnapshotCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdPerformanceSnapshotPayload>
+          }
+          createMany: {
+            args: Prisma.AdPerformanceSnapshotCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.AdPerformanceSnapshotCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdPerformanceSnapshotPayload>[]
+          }
+          delete: {
+            args: Prisma.AdPerformanceSnapshotDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdPerformanceSnapshotPayload>
+          }
+          update: {
+            args: Prisma.AdPerformanceSnapshotUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdPerformanceSnapshotPayload>
+          }
+          deleteMany: {
+            args: Prisma.AdPerformanceSnapshotDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AdPerformanceSnapshotUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.AdPerformanceSnapshotUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdPerformanceSnapshotPayload>[]
+          }
+          upsert: {
+            args: Prisma.AdPerformanceSnapshotUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdPerformanceSnapshotPayload>
+          }
+          aggregate: {
+            args: Prisma.AdPerformanceSnapshotAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAdPerformanceSnapshot>
+          }
+          groupBy: {
+            args: Prisma.AdPerformanceSnapshotGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AdPerformanceSnapshotGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AdPerformanceSnapshotCountArgs<ExtArgs>
+            result: $Utils.Optional<AdPerformanceSnapshotCountAggregateOutputType> | number
+          }
+        }
+      }
+      AdPerformanceData: {
+        payload: Prisma.$AdPerformanceDataPayload<ExtArgs>
+        fields: Prisma.AdPerformanceDataFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AdPerformanceDataFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdPerformanceDataPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AdPerformanceDataFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdPerformanceDataPayload>
+          }
+          findFirst: {
+            args: Prisma.AdPerformanceDataFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdPerformanceDataPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AdPerformanceDataFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdPerformanceDataPayload>
+          }
+          findMany: {
+            args: Prisma.AdPerformanceDataFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdPerformanceDataPayload>[]
+          }
+          create: {
+            args: Prisma.AdPerformanceDataCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdPerformanceDataPayload>
+          }
+          createMany: {
+            args: Prisma.AdPerformanceDataCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.AdPerformanceDataCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdPerformanceDataPayload>[]
+          }
+          delete: {
+            args: Prisma.AdPerformanceDataDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdPerformanceDataPayload>
+          }
+          update: {
+            args: Prisma.AdPerformanceDataUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdPerformanceDataPayload>
+          }
+          deleteMany: {
+            args: Prisma.AdPerformanceDataDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AdPerformanceDataUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.AdPerformanceDataUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdPerformanceDataPayload>[]
+          }
+          upsert: {
+            args: Prisma.AdPerformanceDataUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdPerformanceDataPayload>
+          }
+          aggregate: {
+            args: Prisma.AdPerformanceDataAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAdPerformanceData>
+          }
+          groupBy: {
+            args: Prisma.AdPerformanceDataGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AdPerformanceDataGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AdPerformanceDataCountArgs<ExtArgs>
+            result: $Utils.Optional<AdPerformanceDataCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -957,6 +1137,8 @@ export namespace Prisma {
     message?: MessageOmit
     linkedAccount?: LinkedAccountOmit
     adAccount?: AdAccountOmit
+    adPerformanceSnapshot?: AdPerformanceSnapshotOmit
+    adPerformanceData?: AdPerformanceDataOmit
   }
 
   /* Types for Logging */
@@ -1074,6 +1256,37 @@ export namespace Prisma {
    */
   export type LinkedAccountCountOutputTypeCountAdAccountsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: AdAccountWhereInput
+  }
+
+
+  /**
+   * Count Type AdPerformanceSnapshotCountOutputType
+   */
+
+  export type AdPerformanceSnapshotCountOutputType = {
+    ads: number
+  }
+
+  export type AdPerformanceSnapshotCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    ads?: boolean | AdPerformanceSnapshotCountOutputTypeCountAdsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * AdPerformanceSnapshotCountOutputType without action
+   */
+  export type AdPerformanceSnapshotCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdPerformanceSnapshotCountOutputType
+     */
+    select?: AdPerformanceSnapshotCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * AdPerformanceSnapshotCountOutputType without action
+   */
+  export type AdPerformanceSnapshotCountOutputTypeCountAdsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AdPerformanceDataWhereInput
   }
 
 
@@ -4309,6 +4522,2545 @@ export namespace Prisma {
 
 
   /**
+   * Model AdPerformanceSnapshot
+   */
+
+  export type AggregateAdPerformanceSnapshot = {
+    _count: AdPerformanceSnapshotCountAggregateOutputType | null
+    _avg: AdPerformanceSnapshotAvgAggregateOutputType | null
+    _sum: AdPerformanceSnapshotSumAggregateOutputType | null
+    _min: AdPerformanceSnapshotMinAggregateOutputType | null
+    _max: AdPerformanceSnapshotMaxAggregateOutputType | null
+  }
+
+  export type AdPerformanceSnapshotAvgAggregateOutputType = {
+    totalAdsAnalyzed: number | null
+    averageImpressions: number | null
+    averageCTR: number | null
+    totalSpend: number | null
+    totalImpressions: number | null
+    totalClicks: number | null
+    overallCTR: number | null
+    activeCampaigns: number | null
+    activeAdSets: number | null
+    activeAds: number | null
+    totalAds: number | null
+  }
+
+  export type AdPerformanceSnapshotSumAggregateOutputType = {
+    totalAdsAnalyzed: number | null
+    averageImpressions: number | null
+    averageCTR: number | null
+    totalSpend: number | null
+    totalImpressions: number | null
+    totalClicks: number | null
+    overallCTR: number | null
+    activeCampaigns: number | null
+    activeAdSets: number | null
+    activeAds: number | null
+    totalAds: number | null
+  }
+
+  export type AdPerformanceSnapshotMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    facebookAdAccountId: string | null
+    totalAdsAnalyzed: number | null
+    averageImpressions: number | null
+    averageCTR: number | null
+    totalSpend: number | null
+    totalImpressions: number | null
+    totalClicks: number | null
+    overallCTR: number | null
+    activeCampaigns: number | null
+    activeAdSets: number | null
+    activeAds: number | null
+    totalAds: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type AdPerformanceSnapshotMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    facebookAdAccountId: string | null
+    totalAdsAnalyzed: number | null
+    averageImpressions: number | null
+    averageCTR: number | null
+    totalSpend: number | null
+    totalImpressions: number | null
+    totalClicks: number | null
+    overallCTR: number | null
+    activeCampaigns: number | null
+    activeAdSets: number | null
+    activeAds: number | null
+    totalAds: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type AdPerformanceSnapshotCountAggregateOutputType = {
+    id: number
+    userId: number
+    facebookAdAccountId: number
+    totalAdsAnalyzed: number
+    averageImpressions: number
+    averageCTR: number
+    totalSpend: number
+    totalImpressions: number
+    totalClicks: number
+    overallCTR: number
+    activeCampaigns: number
+    activeAdSets: number
+    activeAds: number
+    totalAds: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type AdPerformanceSnapshotAvgAggregateInputType = {
+    totalAdsAnalyzed?: true
+    averageImpressions?: true
+    averageCTR?: true
+    totalSpend?: true
+    totalImpressions?: true
+    totalClicks?: true
+    overallCTR?: true
+    activeCampaigns?: true
+    activeAdSets?: true
+    activeAds?: true
+    totalAds?: true
+  }
+
+  export type AdPerformanceSnapshotSumAggregateInputType = {
+    totalAdsAnalyzed?: true
+    averageImpressions?: true
+    averageCTR?: true
+    totalSpend?: true
+    totalImpressions?: true
+    totalClicks?: true
+    overallCTR?: true
+    activeCampaigns?: true
+    activeAdSets?: true
+    activeAds?: true
+    totalAds?: true
+  }
+
+  export type AdPerformanceSnapshotMinAggregateInputType = {
+    id?: true
+    userId?: true
+    facebookAdAccountId?: true
+    totalAdsAnalyzed?: true
+    averageImpressions?: true
+    averageCTR?: true
+    totalSpend?: true
+    totalImpressions?: true
+    totalClicks?: true
+    overallCTR?: true
+    activeCampaigns?: true
+    activeAdSets?: true
+    activeAds?: true
+    totalAds?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type AdPerformanceSnapshotMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    facebookAdAccountId?: true
+    totalAdsAnalyzed?: true
+    averageImpressions?: true
+    averageCTR?: true
+    totalSpend?: true
+    totalImpressions?: true
+    totalClicks?: true
+    overallCTR?: true
+    activeCampaigns?: true
+    activeAdSets?: true
+    activeAds?: true
+    totalAds?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type AdPerformanceSnapshotCountAggregateInputType = {
+    id?: true
+    userId?: true
+    facebookAdAccountId?: true
+    totalAdsAnalyzed?: true
+    averageImpressions?: true
+    averageCTR?: true
+    totalSpend?: true
+    totalImpressions?: true
+    totalClicks?: true
+    overallCTR?: true
+    activeCampaigns?: true
+    activeAdSets?: true
+    activeAds?: true
+    totalAds?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type AdPerformanceSnapshotAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AdPerformanceSnapshot to aggregate.
+     */
+    where?: AdPerformanceSnapshotWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AdPerformanceSnapshots to fetch.
+     */
+    orderBy?: AdPerformanceSnapshotOrderByWithRelationInput | AdPerformanceSnapshotOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: AdPerformanceSnapshotWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AdPerformanceSnapshots from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AdPerformanceSnapshots.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned AdPerformanceSnapshots
+    **/
+    _count?: true | AdPerformanceSnapshotCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: AdPerformanceSnapshotAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: AdPerformanceSnapshotSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AdPerformanceSnapshotMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AdPerformanceSnapshotMaxAggregateInputType
+  }
+
+  export type GetAdPerformanceSnapshotAggregateType<T extends AdPerformanceSnapshotAggregateArgs> = {
+        [P in keyof T & keyof AggregateAdPerformanceSnapshot]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAdPerformanceSnapshot[P]>
+      : GetScalarType<T[P], AggregateAdPerformanceSnapshot[P]>
+  }
+
+
+
+
+  export type AdPerformanceSnapshotGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AdPerformanceSnapshotWhereInput
+    orderBy?: AdPerformanceSnapshotOrderByWithAggregationInput | AdPerformanceSnapshotOrderByWithAggregationInput[]
+    by: AdPerformanceSnapshotScalarFieldEnum[] | AdPerformanceSnapshotScalarFieldEnum
+    having?: AdPerformanceSnapshotScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AdPerformanceSnapshotCountAggregateInputType | true
+    _avg?: AdPerformanceSnapshotAvgAggregateInputType
+    _sum?: AdPerformanceSnapshotSumAggregateInputType
+    _min?: AdPerformanceSnapshotMinAggregateInputType
+    _max?: AdPerformanceSnapshotMaxAggregateInputType
+  }
+
+  export type AdPerformanceSnapshotGroupByOutputType = {
+    id: string
+    userId: string
+    facebookAdAccountId: string
+    totalAdsAnalyzed: number
+    averageImpressions: number
+    averageCTR: number
+    totalSpend: number
+    totalImpressions: number
+    totalClicks: number
+    overallCTR: number
+    activeCampaigns: number
+    activeAdSets: number
+    activeAds: number
+    totalAds: number
+    createdAt: Date
+    updatedAt: Date
+    _count: AdPerformanceSnapshotCountAggregateOutputType | null
+    _avg: AdPerformanceSnapshotAvgAggregateOutputType | null
+    _sum: AdPerformanceSnapshotSumAggregateOutputType | null
+    _min: AdPerformanceSnapshotMinAggregateOutputType | null
+    _max: AdPerformanceSnapshotMaxAggregateOutputType | null
+  }
+
+  type GetAdPerformanceSnapshotGroupByPayload<T extends AdPerformanceSnapshotGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AdPerformanceSnapshotGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AdPerformanceSnapshotGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AdPerformanceSnapshotGroupByOutputType[P]>
+            : GetScalarType<T[P], AdPerformanceSnapshotGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type AdPerformanceSnapshotSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    facebookAdAccountId?: boolean
+    totalAdsAnalyzed?: boolean
+    averageImpressions?: boolean
+    averageCTR?: boolean
+    totalSpend?: boolean
+    totalImpressions?: boolean
+    totalClicks?: boolean
+    overallCTR?: boolean
+    activeCampaigns?: boolean
+    activeAdSets?: boolean
+    activeAds?: boolean
+    totalAds?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    ads?: boolean | AdPerformanceSnapshot$adsArgs<ExtArgs>
+    _count?: boolean | AdPerformanceSnapshotCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["adPerformanceSnapshot"]>
+
+  export type AdPerformanceSnapshotSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    facebookAdAccountId?: boolean
+    totalAdsAnalyzed?: boolean
+    averageImpressions?: boolean
+    averageCTR?: boolean
+    totalSpend?: boolean
+    totalImpressions?: boolean
+    totalClicks?: boolean
+    overallCTR?: boolean
+    activeCampaigns?: boolean
+    activeAdSets?: boolean
+    activeAds?: boolean
+    totalAds?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["adPerformanceSnapshot"]>
+
+  export type AdPerformanceSnapshotSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    facebookAdAccountId?: boolean
+    totalAdsAnalyzed?: boolean
+    averageImpressions?: boolean
+    averageCTR?: boolean
+    totalSpend?: boolean
+    totalImpressions?: boolean
+    totalClicks?: boolean
+    overallCTR?: boolean
+    activeCampaigns?: boolean
+    activeAdSets?: boolean
+    activeAds?: boolean
+    totalAds?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["adPerformanceSnapshot"]>
+
+  export type AdPerformanceSnapshotSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    facebookAdAccountId?: boolean
+    totalAdsAnalyzed?: boolean
+    averageImpressions?: boolean
+    averageCTR?: boolean
+    totalSpend?: boolean
+    totalImpressions?: boolean
+    totalClicks?: boolean
+    overallCTR?: boolean
+    activeCampaigns?: boolean
+    activeAdSets?: boolean
+    activeAds?: boolean
+    totalAds?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type AdPerformanceSnapshotOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "facebookAdAccountId" | "totalAdsAnalyzed" | "averageImpressions" | "averageCTR" | "totalSpend" | "totalImpressions" | "totalClicks" | "overallCTR" | "activeCampaigns" | "activeAdSets" | "activeAds" | "totalAds" | "createdAt" | "updatedAt", ExtArgs["result"]["adPerformanceSnapshot"]>
+  export type AdPerformanceSnapshotInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    ads?: boolean | AdPerformanceSnapshot$adsArgs<ExtArgs>
+    _count?: boolean | AdPerformanceSnapshotCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type AdPerformanceSnapshotIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type AdPerformanceSnapshotIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $AdPerformanceSnapshotPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "AdPerformanceSnapshot"
+    objects: {
+      ads: Prisma.$AdPerformanceDataPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      facebookAdAccountId: string
+      totalAdsAnalyzed: number
+      averageImpressions: number
+      averageCTR: number
+      totalSpend: number
+      totalImpressions: number
+      totalClicks: number
+      overallCTR: number
+      activeCampaigns: number
+      activeAdSets: number
+      activeAds: number
+      totalAds: number
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["adPerformanceSnapshot"]>
+    composites: {}
+  }
+
+  type AdPerformanceSnapshotGetPayload<S extends boolean | null | undefined | AdPerformanceSnapshotDefaultArgs> = $Result.GetResult<Prisma.$AdPerformanceSnapshotPayload, S>
+
+  type AdPerformanceSnapshotCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<AdPerformanceSnapshotFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AdPerformanceSnapshotCountAggregateInputType | true
+    }
+
+  export interface AdPerformanceSnapshotDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['AdPerformanceSnapshot'], meta: { name: 'AdPerformanceSnapshot' } }
+    /**
+     * Find zero or one AdPerformanceSnapshot that matches the filter.
+     * @param {AdPerformanceSnapshotFindUniqueArgs} args - Arguments to find a AdPerformanceSnapshot
+     * @example
+     * // Get one AdPerformanceSnapshot
+     * const adPerformanceSnapshot = await prisma.adPerformanceSnapshot.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends AdPerformanceSnapshotFindUniqueArgs>(args: SelectSubset<T, AdPerformanceSnapshotFindUniqueArgs<ExtArgs>>): Prisma__AdPerformanceSnapshotClient<$Result.GetResult<Prisma.$AdPerformanceSnapshotPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one AdPerformanceSnapshot that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {AdPerformanceSnapshotFindUniqueOrThrowArgs} args - Arguments to find a AdPerformanceSnapshot
+     * @example
+     * // Get one AdPerformanceSnapshot
+     * const adPerformanceSnapshot = await prisma.adPerformanceSnapshot.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends AdPerformanceSnapshotFindUniqueOrThrowArgs>(args: SelectSubset<T, AdPerformanceSnapshotFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AdPerformanceSnapshotClient<$Result.GetResult<Prisma.$AdPerformanceSnapshotPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first AdPerformanceSnapshot that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AdPerformanceSnapshotFindFirstArgs} args - Arguments to find a AdPerformanceSnapshot
+     * @example
+     * // Get one AdPerformanceSnapshot
+     * const adPerformanceSnapshot = await prisma.adPerformanceSnapshot.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends AdPerformanceSnapshotFindFirstArgs>(args?: SelectSubset<T, AdPerformanceSnapshotFindFirstArgs<ExtArgs>>): Prisma__AdPerformanceSnapshotClient<$Result.GetResult<Prisma.$AdPerformanceSnapshotPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first AdPerformanceSnapshot that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AdPerformanceSnapshotFindFirstOrThrowArgs} args - Arguments to find a AdPerformanceSnapshot
+     * @example
+     * // Get one AdPerformanceSnapshot
+     * const adPerformanceSnapshot = await prisma.adPerformanceSnapshot.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends AdPerformanceSnapshotFindFirstOrThrowArgs>(args?: SelectSubset<T, AdPerformanceSnapshotFindFirstOrThrowArgs<ExtArgs>>): Prisma__AdPerformanceSnapshotClient<$Result.GetResult<Prisma.$AdPerformanceSnapshotPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more AdPerformanceSnapshots that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AdPerformanceSnapshotFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all AdPerformanceSnapshots
+     * const adPerformanceSnapshots = await prisma.adPerformanceSnapshot.findMany()
+     * 
+     * // Get first 10 AdPerformanceSnapshots
+     * const adPerformanceSnapshots = await prisma.adPerformanceSnapshot.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const adPerformanceSnapshotWithIdOnly = await prisma.adPerformanceSnapshot.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends AdPerformanceSnapshotFindManyArgs>(args?: SelectSubset<T, AdPerformanceSnapshotFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdPerformanceSnapshotPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a AdPerformanceSnapshot.
+     * @param {AdPerformanceSnapshotCreateArgs} args - Arguments to create a AdPerformanceSnapshot.
+     * @example
+     * // Create one AdPerformanceSnapshot
+     * const AdPerformanceSnapshot = await prisma.adPerformanceSnapshot.create({
+     *   data: {
+     *     // ... data to create a AdPerformanceSnapshot
+     *   }
+     * })
+     * 
+     */
+    create<T extends AdPerformanceSnapshotCreateArgs>(args: SelectSubset<T, AdPerformanceSnapshotCreateArgs<ExtArgs>>): Prisma__AdPerformanceSnapshotClient<$Result.GetResult<Prisma.$AdPerformanceSnapshotPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many AdPerformanceSnapshots.
+     * @param {AdPerformanceSnapshotCreateManyArgs} args - Arguments to create many AdPerformanceSnapshots.
+     * @example
+     * // Create many AdPerformanceSnapshots
+     * const adPerformanceSnapshot = await prisma.adPerformanceSnapshot.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends AdPerformanceSnapshotCreateManyArgs>(args?: SelectSubset<T, AdPerformanceSnapshotCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many AdPerformanceSnapshots and returns the data saved in the database.
+     * @param {AdPerformanceSnapshotCreateManyAndReturnArgs} args - Arguments to create many AdPerformanceSnapshots.
+     * @example
+     * // Create many AdPerformanceSnapshots
+     * const adPerformanceSnapshot = await prisma.adPerformanceSnapshot.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many AdPerformanceSnapshots and only return the `id`
+     * const adPerformanceSnapshotWithIdOnly = await prisma.adPerformanceSnapshot.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends AdPerformanceSnapshotCreateManyAndReturnArgs>(args?: SelectSubset<T, AdPerformanceSnapshotCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdPerformanceSnapshotPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a AdPerformanceSnapshot.
+     * @param {AdPerformanceSnapshotDeleteArgs} args - Arguments to delete one AdPerformanceSnapshot.
+     * @example
+     * // Delete one AdPerformanceSnapshot
+     * const AdPerformanceSnapshot = await prisma.adPerformanceSnapshot.delete({
+     *   where: {
+     *     // ... filter to delete one AdPerformanceSnapshot
+     *   }
+     * })
+     * 
+     */
+    delete<T extends AdPerformanceSnapshotDeleteArgs>(args: SelectSubset<T, AdPerformanceSnapshotDeleteArgs<ExtArgs>>): Prisma__AdPerformanceSnapshotClient<$Result.GetResult<Prisma.$AdPerformanceSnapshotPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one AdPerformanceSnapshot.
+     * @param {AdPerformanceSnapshotUpdateArgs} args - Arguments to update one AdPerformanceSnapshot.
+     * @example
+     * // Update one AdPerformanceSnapshot
+     * const adPerformanceSnapshot = await prisma.adPerformanceSnapshot.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends AdPerformanceSnapshotUpdateArgs>(args: SelectSubset<T, AdPerformanceSnapshotUpdateArgs<ExtArgs>>): Prisma__AdPerformanceSnapshotClient<$Result.GetResult<Prisma.$AdPerformanceSnapshotPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more AdPerformanceSnapshots.
+     * @param {AdPerformanceSnapshotDeleteManyArgs} args - Arguments to filter AdPerformanceSnapshots to delete.
+     * @example
+     * // Delete a few AdPerformanceSnapshots
+     * const { count } = await prisma.adPerformanceSnapshot.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends AdPerformanceSnapshotDeleteManyArgs>(args?: SelectSubset<T, AdPerformanceSnapshotDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AdPerformanceSnapshots.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AdPerformanceSnapshotUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many AdPerformanceSnapshots
+     * const adPerformanceSnapshot = await prisma.adPerformanceSnapshot.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends AdPerformanceSnapshotUpdateManyArgs>(args: SelectSubset<T, AdPerformanceSnapshotUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AdPerformanceSnapshots and returns the data updated in the database.
+     * @param {AdPerformanceSnapshotUpdateManyAndReturnArgs} args - Arguments to update many AdPerformanceSnapshots.
+     * @example
+     * // Update many AdPerformanceSnapshots
+     * const adPerformanceSnapshot = await prisma.adPerformanceSnapshot.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more AdPerformanceSnapshots and only return the `id`
+     * const adPerformanceSnapshotWithIdOnly = await prisma.adPerformanceSnapshot.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends AdPerformanceSnapshotUpdateManyAndReturnArgs>(args: SelectSubset<T, AdPerformanceSnapshotUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdPerformanceSnapshotPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one AdPerformanceSnapshot.
+     * @param {AdPerformanceSnapshotUpsertArgs} args - Arguments to update or create a AdPerformanceSnapshot.
+     * @example
+     * // Update or create a AdPerformanceSnapshot
+     * const adPerformanceSnapshot = await prisma.adPerformanceSnapshot.upsert({
+     *   create: {
+     *     // ... data to create a AdPerformanceSnapshot
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the AdPerformanceSnapshot we want to update
+     *   }
+     * })
+     */
+    upsert<T extends AdPerformanceSnapshotUpsertArgs>(args: SelectSubset<T, AdPerformanceSnapshotUpsertArgs<ExtArgs>>): Prisma__AdPerformanceSnapshotClient<$Result.GetResult<Prisma.$AdPerformanceSnapshotPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of AdPerformanceSnapshots.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AdPerformanceSnapshotCountArgs} args - Arguments to filter AdPerformanceSnapshots to count.
+     * @example
+     * // Count the number of AdPerformanceSnapshots
+     * const count = await prisma.adPerformanceSnapshot.count({
+     *   where: {
+     *     // ... the filter for the AdPerformanceSnapshots we want to count
+     *   }
+     * })
+    **/
+    count<T extends AdPerformanceSnapshotCountArgs>(
+      args?: Subset<T, AdPerformanceSnapshotCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AdPerformanceSnapshotCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a AdPerformanceSnapshot.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AdPerformanceSnapshotAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AdPerformanceSnapshotAggregateArgs>(args: Subset<T, AdPerformanceSnapshotAggregateArgs>): Prisma.PrismaPromise<GetAdPerformanceSnapshotAggregateType<T>>
+
+    /**
+     * Group by AdPerformanceSnapshot.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AdPerformanceSnapshotGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends AdPerformanceSnapshotGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: AdPerformanceSnapshotGroupByArgs['orderBy'] }
+        : { orderBy?: AdPerformanceSnapshotGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, AdPerformanceSnapshotGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAdPerformanceSnapshotGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the AdPerformanceSnapshot model
+   */
+  readonly fields: AdPerformanceSnapshotFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for AdPerformanceSnapshot.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__AdPerformanceSnapshotClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    ads<T extends AdPerformanceSnapshot$adsArgs<ExtArgs> = {}>(args?: Subset<T, AdPerformanceSnapshot$adsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdPerformanceDataPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the AdPerformanceSnapshot model
+   */
+  interface AdPerformanceSnapshotFieldRefs {
+    readonly id: FieldRef<"AdPerformanceSnapshot", 'String'>
+    readonly userId: FieldRef<"AdPerformanceSnapshot", 'String'>
+    readonly facebookAdAccountId: FieldRef<"AdPerformanceSnapshot", 'String'>
+    readonly totalAdsAnalyzed: FieldRef<"AdPerformanceSnapshot", 'Int'>
+    readonly averageImpressions: FieldRef<"AdPerformanceSnapshot", 'Float'>
+    readonly averageCTR: FieldRef<"AdPerformanceSnapshot", 'Float'>
+    readonly totalSpend: FieldRef<"AdPerformanceSnapshot", 'Float'>
+    readonly totalImpressions: FieldRef<"AdPerformanceSnapshot", 'Int'>
+    readonly totalClicks: FieldRef<"AdPerformanceSnapshot", 'Int'>
+    readonly overallCTR: FieldRef<"AdPerformanceSnapshot", 'Float'>
+    readonly activeCampaigns: FieldRef<"AdPerformanceSnapshot", 'Int'>
+    readonly activeAdSets: FieldRef<"AdPerformanceSnapshot", 'Int'>
+    readonly activeAds: FieldRef<"AdPerformanceSnapshot", 'Int'>
+    readonly totalAds: FieldRef<"AdPerformanceSnapshot", 'Int'>
+    readonly createdAt: FieldRef<"AdPerformanceSnapshot", 'DateTime'>
+    readonly updatedAt: FieldRef<"AdPerformanceSnapshot", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * AdPerformanceSnapshot findUnique
+   */
+  export type AdPerformanceSnapshotFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdPerformanceSnapshot
+     */
+    select?: AdPerformanceSnapshotSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdPerformanceSnapshot
+     */
+    omit?: AdPerformanceSnapshotOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdPerformanceSnapshotInclude<ExtArgs> | null
+    /**
+     * Filter, which AdPerformanceSnapshot to fetch.
+     */
+    where: AdPerformanceSnapshotWhereUniqueInput
+  }
+
+  /**
+   * AdPerformanceSnapshot findUniqueOrThrow
+   */
+  export type AdPerformanceSnapshotFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdPerformanceSnapshot
+     */
+    select?: AdPerformanceSnapshotSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdPerformanceSnapshot
+     */
+    omit?: AdPerformanceSnapshotOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdPerformanceSnapshotInclude<ExtArgs> | null
+    /**
+     * Filter, which AdPerformanceSnapshot to fetch.
+     */
+    where: AdPerformanceSnapshotWhereUniqueInput
+  }
+
+  /**
+   * AdPerformanceSnapshot findFirst
+   */
+  export type AdPerformanceSnapshotFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdPerformanceSnapshot
+     */
+    select?: AdPerformanceSnapshotSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdPerformanceSnapshot
+     */
+    omit?: AdPerformanceSnapshotOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdPerformanceSnapshotInclude<ExtArgs> | null
+    /**
+     * Filter, which AdPerformanceSnapshot to fetch.
+     */
+    where?: AdPerformanceSnapshotWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AdPerformanceSnapshots to fetch.
+     */
+    orderBy?: AdPerformanceSnapshotOrderByWithRelationInput | AdPerformanceSnapshotOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AdPerformanceSnapshots.
+     */
+    cursor?: AdPerformanceSnapshotWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AdPerformanceSnapshots from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AdPerformanceSnapshots.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AdPerformanceSnapshots.
+     */
+    distinct?: AdPerformanceSnapshotScalarFieldEnum | AdPerformanceSnapshotScalarFieldEnum[]
+  }
+
+  /**
+   * AdPerformanceSnapshot findFirstOrThrow
+   */
+  export type AdPerformanceSnapshotFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdPerformanceSnapshot
+     */
+    select?: AdPerformanceSnapshotSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdPerformanceSnapshot
+     */
+    omit?: AdPerformanceSnapshotOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdPerformanceSnapshotInclude<ExtArgs> | null
+    /**
+     * Filter, which AdPerformanceSnapshot to fetch.
+     */
+    where?: AdPerformanceSnapshotWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AdPerformanceSnapshots to fetch.
+     */
+    orderBy?: AdPerformanceSnapshotOrderByWithRelationInput | AdPerformanceSnapshotOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AdPerformanceSnapshots.
+     */
+    cursor?: AdPerformanceSnapshotWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AdPerformanceSnapshots from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AdPerformanceSnapshots.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AdPerformanceSnapshots.
+     */
+    distinct?: AdPerformanceSnapshotScalarFieldEnum | AdPerformanceSnapshotScalarFieldEnum[]
+  }
+
+  /**
+   * AdPerformanceSnapshot findMany
+   */
+  export type AdPerformanceSnapshotFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdPerformanceSnapshot
+     */
+    select?: AdPerformanceSnapshotSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdPerformanceSnapshot
+     */
+    omit?: AdPerformanceSnapshotOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdPerformanceSnapshotInclude<ExtArgs> | null
+    /**
+     * Filter, which AdPerformanceSnapshots to fetch.
+     */
+    where?: AdPerformanceSnapshotWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AdPerformanceSnapshots to fetch.
+     */
+    orderBy?: AdPerformanceSnapshotOrderByWithRelationInput | AdPerformanceSnapshotOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing AdPerformanceSnapshots.
+     */
+    cursor?: AdPerformanceSnapshotWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AdPerformanceSnapshots from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AdPerformanceSnapshots.
+     */
+    skip?: number
+    distinct?: AdPerformanceSnapshotScalarFieldEnum | AdPerformanceSnapshotScalarFieldEnum[]
+  }
+
+  /**
+   * AdPerformanceSnapshot create
+   */
+  export type AdPerformanceSnapshotCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdPerformanceSnapshot
+     */
+    select?: AdPerformanceSnapshotSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdPerformanceSnapshot
+     */
+    omit?: AdPerformanceSnapshotOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdPerformanceSnapshotInclude<ExtArgs> | null
+    /**
+     * The data needed to create a AdPerformanceSnapshot.
+     */
+    data: XOR<AdPerformanceSnapshotCreateInput, AdPerformanceSnapshotUncheckedCreateInput>
+  }
+
+  /**
+   * AdPerformanceSnapshot createMany
+   */
+  export type AdPerformanceSnapshotCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many AdPerformanceSnapshots.
+     */
+    data: AdPerformanceSnapshotCreateManyInput | AdPerformanceSnapshotCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * AdPerformanceSnapshot createManyAndReturn
+   */
+  export type AdPerformanceSnapshotCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdPerformanceSnapshot
+     */
+    select?: AdPerformanceSnapshotSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdPerformanceSnapshot
+     */
+    omit?: AdPerformanceSnapshotOmit<ExtArgs> | null
+    /**
+     * The data used to create many AdPerformanceSnapshots.
+     */
+    data: AdPerformanceSnapshotCreateManyInput | AdPerformanceSnapshotCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * AdPerformanceSnapshot update
+   */
+  export type AdPerformanceSnapshotUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdPerformanceSnapshot
+     */
+    select?: AdPerformanceSnapshotSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdPerformanceSnapshot
+     */
+    omit?: AdPerformanceSnapshotOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdPerformanceSnapshotInclude<ExtArgs> | null
+    /**
+     * The data needed to update a AdPerformanceSnapshot.
+     */
+    data: XOR<AdPerformanceSnapshotUpdateInput, AdPerformanceSnapshotUncheckedUpdateInput>
+    /**
+     * Choose, which AdPerformanceSnapshot to update.
+     */
+    where: AdPerformanceSnapshotWhereUniqueInput
+  }
+
+  /**
+   * AdPerformanceSnapshot updateMany
+   */
+  export type AdPerformanceSnapshotUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update AdPerformanceSnapshots.
+     */
+    data: XOR<AdPerformanceSnapshotUpdateManyMutationInput, AdPerformanceSnapshotUncheckedUpdateManyInput>
+    /**
+     * Filter which AdPerformanceSnapshots to update
+     */
+    where?: AdPerformanceSnapshotWhereInput
+    /**
+     * Limit how many AdPerformanceSnapshots to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * AdPerformanceSnapshot updateManyAndReturn
+   */
+  export type AdPerformanceSnapshotUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdPerformanceSnapshot
+     */
+    select?: AdPerformanceSnapshotSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdPerformanceSnapshot
+     */
+    omit?: AdPerformanceSnapshotOmit<ExtArgs> | null
+    /**
+     * The data used to update AdPerformanceSnapshots.
+     */
+    data: XOR<AdPerformanceSnapshotUpdateManyMutationInput, AdPerformanceSnapshotUncheckedUpdateManyInput>
+    /**
+     * Filter which AdPerformanceSnapshots to update
+     */
+    where?: AdPerformanceSnapshotWhereInput
+    /**
+     * Limit how many AdPerformanceSnapshots to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * AdPerformanceSnapshot upsert
+   */
+  export type AdPerformanceSnapshotUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdPerformanceSnapshot
+     */
+    select?: AdPerformanceSnapshotSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdPerformanceSnapshot
+     */
+    omit?: AdPerformanceSnapshotOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdPerformanceSnapshotInclude<ExtArgs> | null
+    /**
+     * The filter to search for the AdPerformanceSnapshot to update in case it exists.
+     */
+    where: AdPerformanceSnapshotWhereUniqueInput
+    /**
+     * In case the AdPerformanceSnapshot found by the `where` argument doesn't exist, create a new AdPerformanceSnapshot with this data.
+     */
+    create: XOR<AdPerformanceSnapshotCreateInput, AdPerformanceSnapshotUncheckedCreateInput>
+    /**
+     * In case the AdPerformanceSnapshot was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AdPerformanceSnapshotUpdateInput, AdPerformanceSnapshotUncheckedUpdateInput>
+  }
+
+  /**
+   * AdPerformanceSnapshot delete
+   */
+  export type AdPerformanceSnapshotDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdPerformanceSnapshot
+     */
+    select?: AdPerformanceSnapshotSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdPerformanceSnapshot
+     */
+    omit?: AdPerformanceSnapshotOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdPerformanceSnapshotInclude<ExtArgs> | null
+    /**
+     * Filter which AdPerformanceSnapshot to delete.
+     */
+    where: AdPerformanceSnapshotWhereUniqueInput
+  }
+
+  /**
+   * AdPerformanceSnapshot deleteMany
+   */
+  export type AdPerformanceSnapshotDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AdPerformanceSnapshots to delete
+     */
+    where?: AdPerformanceSnapshotWhereInput
+    /**
+     * Limit how many AdPerformanceSnapshots to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * AdPerformanceSnapshot.ads
+   */
+  export type AdPerformanceSnapshot$adsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdPerformanceData
+     */
+    select?: AdPerformanceDataSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdPerformanceData
+     */
+    omit?: AdPerformanceDataOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdPerformanceDataInclude<ExtArgs> | null
+    where?: AdPerformanceDataWhereInput
+    orderBy?: AdPerformanceDataOrderByWithRelationInput | AdPerformanceDataOrderByWithRelationInput[]
+    cursor?: AdPerformanceDataWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AdPerformanceDataScalarFieldEnum | AdPerformanceDataScalarFieldEnum[]
+  }
+
+  /**
+   * AdPerformanceSnapshot without action
+   */
+  export type AdPerformanceSnapshotDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdPerformanceSnapshot
+     */
+    select?: AdPerformanceSnapshotSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdPerformanceSnapshot
+     */
+    omit?: AdPerformanceSnapshotOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdPerformanceSnapshotInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model AdPerformanceData
+   */
+
+  export type AggregateAdPerformanceData = {
+    _count: AdPerformanceDataCountAggregateOutputType | null
+    _avg: AdPerformanceDataAvgAggregateOutputType | null
+    _sum: AdPerformanceDataSumAggregateOutputType | null
+    _min: AdPerformanceDataMinAggregateOutputType | null
+    _max: AdPerformanceDataMaxAggregateOutputType | null
+  }
+
+  export type AdPerformanceDataAvgAggregateOutputType = {
+    impressions: number | null
+    ctr: number | null
+    performanceScore: number | null
+  }
+
+  export type AdPerformanceDataSumAggregateOutputType = {
+    impressions: number | null
+    ctr: number | null
+    performanceScore: number | null
+  }
+
+  export type AdPerformanceDataMinAggregateOutputType = {
+    id: string | null
+    snapshotId: string | null
+    facebookAdId: string | null
+    adName: string | null
+    impressions: number | null
+    ctr: number | null
+    engagementRateRanking: string | null
+    performanceScore: number | null
+    performanceCategory: string | null
+    impressionsVsAverage: string | null
+    ctrVsAverage: string | null
+    engagementRanking: string | null
+    previewUrl: string | null
+    adCreatedTime: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type AdPerformanceDataMaxAggregateOutputType = {
+    id: string | null
+    snapshotId: string | null
+    facebookAdId: string | null
+    adName: string | null
+    impressions: number | null
+    ctr: number | null
+    engagementRateRanking: string | null
+    performanceScore: number | null
+    performanceCategory: string | null
+    impressionsVsAverage: string | null
+    ctrVsAverage: string | null
+    engagementRanking: string | null
+    previewUrl: string | null
+    adCreatedTime: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type AdPerformanceDataCountAggregateOutputType = {
+    id: number
+    snapshotId: number
+    facebookAdId: number
+    adName: number
+    impressions: number
+    ctr: number
+    engagementRateRanking: number
+    performanceScore: number
+    performanceCategory: number
+    impressionsVsAverage: number
+    ctrVsAverage: number
+    engagementRanking: number
+    reasons: number
+    previewUrl: number
+    adCreatedTime: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type AdPerformanceDataAvgAggregateInputType = {
+    impressions?: true
+    ctr?: true
+    performanceScore?: true
+  }
+
+  export type AdPerformanceDataSumAggregateInputType = {
+    impressions?: true
+    ctr?: true
+    performanceScore?: true
+  }
+
+  export type AdPerformanceDataMinAggregateInputType = {
+    id?: true
+    snapshotId?: true
+    facebookAdId?: true
+    adName?: true
+    impressions?: true
+    ctr?: true
+    engagementRateRanking?: true
+    performanceScore?: true
+    performanceCategory?: true
+    impressionsVsAverage?: true
+    ctrVsAverage?: true
+    engagementRanking?: true
+    previewUrl?: true
+    adCreatedTime?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type AdPerformanceDataMaxAggregateInputType = {
+    id?: true
+    snapshotId?: true
+    facebookAdId?: true
+    adName?: true
+    impressions?: true
+    ctr?: true
+    engagementRateRanking?: true
+    performanceScore?: true
+    performanceCategory?: true
+    impressionsVsAverage?: true
+    ctrVsAverage?: true
+    engagementRanking?: true
+    previewUrl?: true
+    adCreatedTime?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type AdPerformanceDataCountAggregateInputType = {
+    id?: true
+    snapshotId?: true
+    facebookAdId?: true
+    adName?: true
+    impressions?: true
+    ctr?: true
+    engagementRateRanking?: true
+    performanceScore?: true
+    performanceCategory?: true
+    impressionsVsAverage?: true
+    ctrVsAverage?: true
+    engagementRanking?: true
+    reasons?: true
+    previewUrl?: true
+    adCreatedTime?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type AdPerformanceDataAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AdPerformanceData to aggregate.
+     */
+    where?: AdPerformanceDataWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AdPerformanceData to fetch.
+     */
+    orderBy?: AdPerformanceDataOrderByWithRelationInput | AdPerformanceDataOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: AdPerformanceDataWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AdPerformanceData from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AdPerformanceData.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned AdPerformanceData
+    **/
+    _count?: true | AdPerformanceDataCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: AdPerformanceDataAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: AdPerformanceDataSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AdPerformanceDataMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AdPerformanceDataMaxAggregateInputType
+  }
+
+  export type GetAdPerformanceDataAggregateType<T extends AdPerformanceDataAggregateArgs> = {
+        [P in keyof T & keyof AggregateAdPerformanceData]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAdPerformanceData[P]>
+      : GetScalarType<T[P], AggregateAdPerformanceData[P]>
+  }
+
+
+
+
+  export type AdPerformanceDataGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AdPerformanceDataWhereInput
+    orderBy?: AdPerformanceDataOrderByWithAggregationInput | AdPerformanceDataOrderByWithAggregationInput[]
+    by: AdPerformanceDataScalarFieldEnum[] | AdPerformanceDataScalarFieldEnum
+    having?: AdPerformanceDataScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AdPerformanceDataCountAggregateInputType | true
+    _avg?: AdPerformanceDataAvgAggregateInputType
+    _sum?: AdPerformanceDataSumAggregateInputType
+    _min?: AdPerformanceDataMinAggregateInputType
+    _max?: AdPerformanceDataMaxAggregateInputType
+  }
+
+  export type AdPerformanceDataGroupByOutputType = {
+    id: string
+    snapshotId: string
+    facebookAdId: string
+    adName: string
+    impressions: number
+    ctr: number
+    engagementRateRanking: string | null
+    performanceScore: number
+    performanceCategory: string
+    impressionsVsAverage: string
+    ctrVsAverage: string
+    engagementRanking: string
+    reasons: string[]
+    previewUrl: string | null
+    adCreatedTime: Date
+    createdAt: Date
+    updatedAt: Date
+    _count: AdPerformanceDataCountAggregateOutputType | null
+    _avg: AdPerformanceDataAvgAggregateOutputType | null
+    _sum: AdPerformanceDataSumAggregateOutputType | null
+    _min: AdPerformanceDataMinAggregateOutputType | null
+    _max: AdPerformanceDataMaxAggregateOutputType | null
+  }
+
+  type GetAdPerformanceDataGroupByPayload<T extends AdPerformanceDataGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AdPerformanceDataGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AdPerformanceDataGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AdPerformanceDataGroupByOutputType[P]>
+            : GetScalarType<T[P], AdPerformanceDataGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type AdPerformanceDataSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    snapshotId?: boolean
+    facebookAdId?: boolean
+    adName?: boolean
+    impressions?: boolean
+    ctr?: boolean
+    engagementRateRanking?: boolean
+    performanceScore?: boolean
+    performanceCategory?: boolean
+    impressionsVsAverage?: boolean
+    ctrVsAverage?: boolean
+    engagementRanking?: boolean
+    reasons?: boolean
+    previewUrl?: boolean
+    adCreatedTime?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    snapshot?: boolean | AdPerformanceSnapshotDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["adPerformanceData"]>
+
+  export type AdPerformanceDataSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    snapshotId?: boolean
+    facebookAdId?: boolean
+    adName?: boolean
+    impressions?: boolean
+    ctr?: boolean
+    engagementRateRanking?: boolean
+    performanceScore?: boolean
+    performanceCategory?: boolean
+    impressionsVsAverage?: boolean
+    ctrVsAverage?: boolean
+    engagementRanking?: boolean
+    reasons?: boolean
+    previewUrl?: boolean
+    adCreatedTime?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    snapshot?: boolean | AdPerformanceSnapshotDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["adPerformanceData"]>
+
+  export type AdPerformanceDataSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    snapshotId?: boolean
+    facebookAdId?: boolean
+    adName?: boolean
+    impressions?: boolean
+    ctr?: boolean
+    engagementRateRanking?: boolean
+    performanceScore?: boolean
+    performanceCategory?: boolean
+    impressionsVsAverage?: boolean
+    ctrVsAverage?: boolean
+    engagementRanking?: boolean
+    reasons?: boolean
+    previewUrl?: boolean
+    adCreatedTime?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    snapshot?: boolean | AdPerformanceSnapshotDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["adPerformanceData"]>
+
+  export type AdPerformanceDataSelectScalar = {
+    id?: boolean
+    snapshotId?: boolean
+    facebookAdId?: boolean
+    adName?: boolean
+    impressions?: boolean
+    ctr?: boolean
+    engagementRateRanking?: boolean
+    performanceScore?: boolean
+    performanceCategory?: boolean
+    impressionsVsAverage?: boolean
+    ctrVsAverage?: boolean
+    engagementRanking?: boolean
+    reasons?: boolean
+    previewUrl?: boolean
+    adCreatedTime?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type AdPerformanceDataOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "snapshotId" | "facebookAdId" | "adName" | "impressions" | "ctr" | "engagementRateRanking" | "performanceScore" | "performanceCategory" | "impressionsVsAverage" | "ctrVsAverage" | "engagementRanking" | "reasons" | "previewUrl" | "adCreatedTime" | "createdAt" | "updatedAt", ExtArgs["result"]["adPerformanceData"]>
+  export type AdPerformanceDataInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    snapshot?: boolean | AdPerformanceSnapshotDefaultArgs<ExtArgs>
+  }
+  export type AdPerformanceDataIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    snapshot?: boolean | AdPerformanceSnapshotDefaultArgs<ExtArgs>
+  }
+  export type AdPerformanceDataIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    snapshot?: boolean | AdPerformanceSnapshotDefaultArgs<ExtArgs>
+  }
+
+  export type $AdPerformanceDataPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "AdPerformanceData"
+    objects: {
+      snapshot: Prisma.$AdPerformanceSnapshotPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      snapshotId: string
+      facebookAdId: string
+      adName: string
+      impressions: number
+      ctr: number
+      engagementRateRanking: string | null
+      performanceScore: number
+      performanceCategory: string
+      impressionsVsAverage: string
+      ctrVsAverage: string
+      engagementRanking: string
+      reasons: string[]
+      previewUrl: string | null
+      adCreatedTime: Date
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["adPerformanceData"]>
+    composites: {}
+  }
+
+  type AdPerformanceDataGetPayload<S extends boolean | null | undefined | AdPerformanceDataDefaultArgs> = $Result.GetResult<Prisma.$AdPerformanceDataPayload, S>
+
+  type AdPerformanceDataCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<AdPerformanceDataFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AdPerformanceDataCountAggregateInputType | true
+    }
+
+  export interface AdPerformanceDataDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['AdPerformanceData'], meta: { name: 'AdPerformanceData' } }
+    /**
+     * Find zero or one AdPerformanceData that matches the filter.
+     * @param {AdPerformanceDataFindUniqueArgs} args - Arguments to find a AdPerformanceData
+     * @example
+     * // Get one AdPerformanceData
+     * const adPerformanceData = await prisma.adPerformanceData.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends AdPerformanceDataFindUniqueArgs>(args: SelectSubset<T, AdPerformanceDataFindUniqueArgs<ExtArgs>>): Prisma__AdPerformanceDataClient<$Result.GetResult<Prisma.$AdPerformanceDataPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one AdPerformanceData that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {AdPerformanceDataFindUniqueOrThrowArgs} args - Arguments to find a AdPerformanceData
+     * @example
+     * // Get one AdPerformanceData
+     * const adPerformanceData = await prisma.adPerformanceData.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends AdPerformanceDataFindUniqueOrThrowArgs>(args: SelectSubset<T, AdPerformanceDataFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AdPerformanceDataClient<$Result.GetResult<Prisma.$AdPerformanceDataPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first AdPerformanceData that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AdPerformanceDataFindFirstArgs} args - Arguments to find a AdPerformanceData
+     * @example
+     * // Get one AdPerformanceData
+     * const adPerformanceData = await prisma.adPerformanceData.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends AdPerformanceDataFindFirstArgs>(args?: SelectSubset<T, AdPerformanceDataFindFirstArgs<ExtArgs>>): Prisma__AdPerformanceDataClient<$Result.GetResult<Prisma.$AdPerformanceDataPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first AdPerformanceData that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AdPerformanceDataFindFirstOrThrowArgs} args - Arguments to find a AdPerformanceData
+     * @example
+     * // Get one AdPerformanceData
+     * const adPerformanceData = await prisma.adPerformanceData.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends AdPerformanceDataFindFirstOrThrowArgs>(args?: SelectSubset<T, AdPerformanceDataFindFirstOrThrowArgs<ExtArgs>>): Prisma__AdPerformanceDataClient<$Result.GetResult<Prisma.$AdPerformanceDataPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more AdPerformanceData that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AdPerformanceDataFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all AdPerformanceData
+     * const adPerformanceData = await prisma.adPerformanceData.findMany()
+     * 
+     * // Get first 10 AdPerformanceData
+     * const adPerformanceData = await prisma.adPerformanceData.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const adPerformanceDataWithIdOnly = await prisma.adPerformanceData.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends AdPerformanceDataFindManyArgs>(args?: SelectSubset<T, AdPerformanceDataFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdPerformanceDataPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a AdPerformanceData.
+     * @param {AdPerformanceDataCreateArgs} args - Arguments to create a AdPerformanceData.
+     * @example
+     * // Create one AdPerformanceData
+     * const AdPerformanceData = await prisma.adPerformanceData.create({
+     *   data: {
+     *     // ... data to create a AdPerformanceData
+     *   }
+     * })
+     * 
+     */
+    create<T extends AdPerformanceDataCreateArgs>(args: SelectSubset<T, AdPerformanceDataCreateArgs<ExtArgs>>): Prisma__AdPerformanceDataClient<$Result.GetResult<Prisma.$AdPerformanceDataPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many AdPerformanceData.
+     * @param {AdPerformanceDataCreateManyArgs} args - Arguments to create many AdPerformanceData.
+     * @example
+     * // Create many AdPerformanceData
+     * const adPerformanceData = await prisma.adPerformanceData.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends AdPerformanceDataCreateManyArgs>(args?: SelectSubset<T, AdPerformanceDataCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many AdPerformanceData and returns the data saved in the database.
+     * @param {AdPerformanceDataCreateManyAndReturnArgs} args - Arguments to create many AdPerformanceData.
+     * @example
+     * // Create many AdPerformanceData
+     * const adPerformanceData = await prisma.adPerformanceData.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many AdPerformanceData and only return the `id`
+     * const adPerformanceDataWithIdOnly = await prisma.adPerformanceData.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends AdPerformanceDataCreateManyAndReturnArgs>(args?: SelectSubset<T, AdPerformanceDataCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdPerformanceDataPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a AdPerformanceData.
+     * @param {AdPerformanceDataDeleteArgs} args - Arguments to delete one AdPerformanceData.
+     * @example
+     * // Delete one AdPerformanceData
+     * const AdPerformanceData = await prisma.adPerformanceData.delete({
+     *   where: {
+     *     // ... filter to delete one AdPerformanceData
+     *   }
+     * })
+     * 
+     */
+    delete<T extends AdPerformanceDataDeleteArgs>(args: SelectSubset<T, AdPerformanceDataDeleteArgs<ExtArgs>>): Prisma__AdPerformanceDataClient<$Result.GetResult<Prisma.$AdPerformanceDataPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one AdPerformanceData.
+     * @param {AdPerformanceDataUpdateArgs} args - Arguments to update one AdPerformanceData.
+     * @example
+     * // Update one AdPerformanceData
+     * const adPerformanceData = await prisma.adPerformanceData.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends AdPerformanceDataUpdateArgs>(args: SelectSubset<T, AdPerformanceDataUpdateArgs<ExtArgs>>): Prisma__AdPerformanceDataClient<$Result.GetResult<Prisma.$AdPerformanceDataPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more AdPerformanceData.
+     * @param {AdPerformanceDataDeleteManyArgs} args - Arguments to filter AdPerformanceData to delete.
+     * @example
+     * // Delete a few AdPerformanceData
+     * const { count } = await prisma.adPerformanceData.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends AdPerformanceDataDeleteManyArgs>(args?: SelectSubset<T, AdPerformanceDataDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AdPerformanceData.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AdPerformanceDataUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many AdPerformanceData
+     * const adPerformanceData = await prisma.adPerformanceData.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends AdPerformanceDataUpdateManyArgs>(args: SelectSubset<T, AdPerformanceDataUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AdPerformanceData and returns the data updated in the database.
+     * @param {AdPerformanceDataUpdateManyAndReturnArgs} args - Arguments to update many AdPerformanceData.
+     * @example
+     * // Update many AdPerformanceData
+     * const adPerformanceData = await prisma.adPerformanceData.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more AdPerformanceData and only return the `id`
+     * const adPerformanceDataWithIdOnly = await prisma.adPerformanceData.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends AdPerformanceDataUpdateManyAndReturnArgs>(args: SelectSubset<T, AdPerformanceDataUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdPerformanceDataPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one AdPerformanceData.
+     * @param {AdPerformanceDataUpsertArgs} args - Arguments to update or create a AdPerformanceData.
+     * @example
+     * // Update or create a AdPerformanceData
+     * const adPerformanceData = await prisma.adPerformanceData.upsert({
+     *   create: {
+     *     // ... data to create a AdPerformanceData
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the AdPerformanceData we want to update
+     *   }
+     * })
+     */
+    upsert<T extends AdPerformanceDataUpsertArgs>(args: SelectSubset<T, AdPerformanceDataUpsertArgs<ExtArgs>>): Prisma__AdPerformanceDataClient<$Result.GetResult<Prisma.$AdPerformanceDataPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of AdPerformanceData.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AdPerformanceDataCountArgs} args - Arguments to filter AdPerformanceData to count.
+     * @example
+     * // Count the number of AdPerformanceData
+     * const count = await prisma.adPerformanceData.count({
+     *   where: {
+     *     // ... the filter for the AdPerformanceData we want to count
+     *   }
+     * })
+    **/
+    count<T extends AdPerformanceDataCountArgs>(
+      args?: Subset<T, AdPerformanceDataCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AdPerformanceDataCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a AdPerformanceData.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AdPerformanceDataAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AdPerformanceDataAggregateArgs>(args: Subset<T, AdPerformanceDataAggregateArgs>): Prisma.PrismaPromise<GetAdPerformanceDataAggregateType<T>>
+
+    /**
+     * Group by AdPerformanceData.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AdPerformanceDataGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends AdPerformanceDataGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: AdPerformanceDataGroupByArgs['orderBy'] }
+        : { orderBy?: AdPerformanceDataGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, AdPerformanceDataGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAdPerformanceDataGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the AdPerformanceData model
+   */
+  readonly fields: AdPerformanceDataFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for AdPerformanceData.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__AdPerformanceDataClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    snapshot<T extends AdPerformanceSnapshotDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AdPerformanceSnapshotDefaultArgs<ExtArgs>>): Prisma__AdPerformanceSnapshotClient<$Result.GetResult<Prisma.$AdPerformanceSnapshotPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the AdPerformanceData model
+   */
+  interface AdPerformanceDataFieldRefs {
+    readonly id: FieldRef<"AdPerformanceData", 'String'>
+    readonly snapshotId: FieldRef<"AdPerformanceData", 'String'>
+    readonly facebookAdId: FieldRef<"AdPerformanceData", 'String'>
+    readonly adName: FieldRef<"AdPerformanceData", 'String'>
+    readonly impressions: FieldRef<"AdPerformanceData", 'Int'>
+    readonly ctr: FieldRef<"AdPerformanceData", 'Float'>
+    readonly engagementRateRanking: FieldRef<"AdPerformanceData", 'String'>
+    readonly performanceScore: FieldRef<"AdPerformanceData", 'Int'>
+    readonly performanceCategory: FieldRef<"AdPerformanceData", 'String'>
+    readonly impressionsVsAverage: FieldRef<"AdPerformanceData", 'String'>
+    readonly ctrVsAverage: FieldRef<"AdPerformanceData", 'String'>
+    readonly engagementRanking: FieldRef<"AdPerformanceData", 'String'>
+    readonly reasons: FieldRef<"AdPerformanceData", 'String[]'>
+    readonly previewUrl: FieldRef<"AdPerformanceData", 'String'>
+    readonly adCreatedTime: FieldRef<"AdPerformanceData", 'DateTime'>
+    readonly createdAt: FieldRef<"AdPerformanceData", 'DateTime'>
+    readonly updatedAt: FieldRef<"AdPerformanceData", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * AdPerformanceData findUnique
+   */
+  export type AdPerformanceDataFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdPerformanceData
+     */
+    select?: AdPerformanceDataSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdPerformanceData
+     */
+    omit?: AdPerformanceDataOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdPerformanceDataInclude<ExtArgs> | null
+    /**
+     * Filter, which AdPerformanceData to fetch.
+     */
+    where: AdPerformanceDataWhereUniqueInput
+  }
+
+  /**
+   * AdPerformanceData findUniqueOrThrow
+   */
+  export type AdPerformanceDataFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdPerformanceData
+     */
+    select?: AdPerformanceDataSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdPerformanceData
+     */
+    omit?: AdPerformanceDataOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdPerformanceDataInclude<ExtArgs> | null
+    /**
+     * Filter, which AdPerformanceData to fetch.
+     */
+    where: AdPerformanceDataWhereUniqueInput
+  }
+
+  /**
+   * AdPerformanceData findFirst
+   */
+  export type AdPerformanceDataFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdPerformanceData
+     */
+    select?: AdPerformanceDataSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdPerformanceData
+     */
+    omit?: AdPerformanceDataOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdPerformanceDataInclude<ExtArgs> | null
+    /**
+     * Filter, which AdPerformanceData to fetch.
+     */
+    where?: AdPerformanceDataWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AdPerformanceData to fetch.
+     */
+    orderBy?: AdPerformanceDataOrderByWithRelationInput | AdPerformanceDataOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AdPerformanceData.
+     */
+    cursor?: AdPerformanceDataWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AdPerformanceData from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AdPerformanceData.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AdPerformanceData.
+     */
+    distinct?: AdPerformanceDataScalarFieldEnum | AdPerformanceDataScalarFieldEnum[]
+  }
+
+  /**
+   * AdPerformanceData findFirstOrThrow
+   */
+  export type AdPerformanceDataFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdPerformanceData
+     */
+    select?: AdPerformanceDataSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdPerformanceData
+     */
+    omit?: AdPerformanceDataOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdPerformanceDataInclude<ExtArgs> | null
+    /**
+     * Filter, which AdPerformanceData to fetch.
+     */
+    where?: AdPerformanceDataWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AdPerformanceData to fetch.
+     */
+    orderBy?: AdPerformanceDataOrderByWithRelationInput | AdPerformanceDataOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AdPerformanceData.
+     */
+    cursor?: AdPerformanceDataWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AdPerformanceData from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AdPerformanceData.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AdPerformanceData.
+     */
+    distinct?: AdPerformanceDataScalarFieldEnum | AdPerformanceDataScalarFieldEnum[]
+  }
+
+  /**
+   * AdPerformanceData findMany
+   */
+  export type AdPerformanceDataFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdPerformanceData
+     */
+    select?: AdPerformanceDataSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdPerformanceData
+     */
+    omit?: AdPerformanceDataOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdPerformanceDataInclude<ExtArgs> | null
+    /**
+     * Filter, which AdPerformanceData to fetch.
+     */
+    where?: AdPerformanceDataWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AdPerformanceData to fetch.
+     */
+    orderBy?: AdPerformanceDataOrderByWithRelationInput | AdPerformanceDataOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing AdPerformanceData.
+     */
+    cursor?: AdPerformanceDataWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AdPerformanceData from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AdPerformanceData.
+     */
+    skip?: number
+    distinct?: AdPerformanceDataScalarFieldEnum | AdPerformanceDataScalarFieldEnum[]
+  }
+
+  /**
+   * AdPerformanceData create
+   */
+  export type AdPerformanceDataCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdPerformanceData
+     */
+    select?: AdPerformanceDataSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdPerformanceData
+     */
+    omit?: AdPerformanceDataOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdPerformanceDataInclude<ExtArgs> | null
+    /**
+     * The data needed to create a AdPerformanceData.
+     */
+    data: XOR<AdPerformanceDataCreateInput, AdPerformanceDataUncheckedCreateInput>
+  }
+
+  /**
+   * AdPerformanceData createMany
+   */
+  export type AdPerformanceDataCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many AdPerformanceData.
+     */
+    data: AdPerformanceDataCreateManyInput | AdPerformanceDataCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * AdPerformanceData createManyAndReturn
+   */
+  export type AdPerformanceDataCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdPerformanceData
+     */
+    select?: AdPerformanceDataSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdPerformanceData
+     */
+    omit?: AdPerformanceDataOmit<ExtArgs> | null
+    /**
+     * The data used to create many AdPerformanceData.
+     */
+    data: AdPerformanceDataCreateManyInput | AdPerformanceDataCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdPerformanceDataIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * AdPerformanceData update
+   */
+  export type AdPerformanceDataUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdPerformanceData
+     */
+    select?: AdPerformanceDataSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdPerformanceData
+     */
+    omit?: AdPerformanceDataOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdPerformanceDataInclude<ExtArgs> | null
+    /**
+     * The data needed to update a AdPerformanceData.
+     */
+    data: XOR<AdPerformanceDataUpdateInput, AdPerformanceDataUncheckedUpdateInput>
+    /**
+     * Choose, which AdPerformanceData to update.
+     */
+    where: AdPerformanceDataWhereUniqueInput
+  }
+
+  /**
+   * AdPerformanceData updateMany
+   */
+  export type AdPerformanceDataUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update AdPerformanceData.
+     */
+    data: XOR<AdPerformanceDataUpdateManyMutationInput, AdPerformanceDataUncheckedUpdateManyInput>
+    /**
+     * Filter which AdPerformanceData to update
+     */
+    where?: AdPerformanceDataWhereInput
+    /**
+     * Limit how many AdPerformanceData to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * AdPerformanceData updateManyAndReturn
+   */
+  export type AdPerformanceDataUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdPerformanceData
+     */
+    select?: AdPerformanceDataSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdPerformanceData
+     */
+    omit?: AdPerformanceDataOmit<ExtArgs> | null
+    /**
+     * The data used to update AdPerformanceData.
+     */
+    data: XOR<AdPerformanceDataUpdateManyMutationInput, AdPerformanceDataUncheckedUpdateManyInput>
+    /**
+     * Filter which AdPerformanceData to update
+     */
+    where?: AdPerformanceDataWhereInput
+    /**
+     * Limit how many AdPerformanceData to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdPerformanceDataIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * AdPerformanceData upsert
+   */
+  export type AdPerformanceDataUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdPerformanceData
+     */
+    select?: AdPerformanceDataSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdPerformanceData
+     */
+    omit?: AdPerformanceDataOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdPerformanceDataInclude<ExtArgs> | null
+    /**
+     * The filter to search for the AdPerformanceData to update in case it exists.
+     */
+    where: AdPerformanceDataWhereUniqueInput
+    /**
+     * In case the AdPerformanceData found by the `where` argument doesn't exist, create a new AdPerformanceData with this data.
+     */
+    create: XOR<AdPerformanceDataCreateInput, AdPerformanceDataUncheckedCreateInput>
+    /**
+     * In case the AdPerformanceData was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AdPerformanceDataUpdateInput, AdPerformanceDataUncheckedUpdateInput>
+  }
+
+  /**
+   * AdPerformanceData delete
+   */
+  export type AdPerformanceDataDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdPerformanceData
+     */
+    select?: AdPerformanceDataSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdPerformanceData
+     */
+    omit?: AdPerformanceDataOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdPerformanceDataInclude<ExtArgs> | null
+    /**
+     * Filter which AdPerformanceData to delete.
+     */
+    where: AdPerformanceDataWhereUniqueInput
+  }
+
+  /**
+   * AdPerformanceData deleteMany
+   */
+  export type AdPerformanceDataDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AdPerformanceData to delete
+     */
+    where?: AdPerformanceDataWhereInput
+    /**
+     * Limit how many AdPerformanceData to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * AdPerformanceData without action
+   */
+  export type AdPerformanceDataDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdPerformanceData
+     */
+    select?: AdPerformanceDataSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdPerformanceData
+     */
+    omit?: AdPerformanceDataOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdPerformanceDataInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -4363,6 +7115,51 @@ export namespace Prisma {
   export type AdAccountScalarFieldEnum = (typeof AdAccountScalarFieldEnum)[keyof typeof AdAccountScalarFieldEnum]
 
 
+  export const AdPerformanceSnapshotScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    facebookAdAccountId: 'facebookAdAccountId',
+    totalAdsAnalyzed: 'totalAdsAnalyzed',
+    averageImpressions: 'averageImpressions',
+    averageCTR: 'averageCTR',
+    totalSpend: 'totalSpend',
+    totalImpressions: 'totalImpressions',
+    totalClicks: 'totalClicks',
+    overallCTR: 'overallCTR',
+    activeCampaigns: 'activeCampaigns',
+    activeAdSets: 'activeAdSets',
+    activeAds: 'activeAds',
+    totalAds: 'totalAds',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type AdPerformanceSnapshotScalarFieldEnum = (typeof AdPerformanceSnapshotScalarFieldEnum)[keyof typeof AdPerformanceSnapshotScalarFieldEnum]
+
+
+  export const AdPerformanceDataScalarFieldEnum: {
+    id: 'id',
+    snapshotId: 'snapshotId',
+    facebookAdId: 'facebookAdId',
+    adName: 'adName',
+    impressions: 'impressions',
+    ctr: 'ctr',
+    engagementRateRanking: 'engagementRateRanking',
+    performanceScore: 'performanceScore',
+    performanceCategory: 'performanceCategory',
+    impressionsVsAverage: 'impressionsVsAverage',
+    ctrVsAverage: 'ctrVsAverage',
+    engagementRanking: 'engagementRanking',
+    reasons: 'reasons',
+    previewUrl: 'previewUrl',
+    adCreatedTime: 'adCreatedTime',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type AdPerformanceDataScalarFieldEnum = (typeof AdPerformanceDataScalarFieldEnum)[keyof typeof AdPerformanceDataScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -4377,6 +7174,14 @@ export namespace Prisma {
   };
 
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
   /**
@@ -4430,6 +7235,20 @@ export namespace Prisma {
    * Reference to a field of type 'Int[]'
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float'
+   */
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
   /**
    * Deep Input Types
@@ -4637,6 +7456,235 @@ export namespace Prisma {
     accountName?: StringWithAggregatesFilter<"AdAccount"> | string
     createdAt?: DateTimeWithAggregatesFilter<"AdAccount"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"AdAccount"> | Date | string
+  }
+
+  export type AdPerformanceSnapshotWhereInput = {
+    AND?: AdPerformanceSnapshotWhereInput | AdPerformanceSnapshotWhereInput[]
+    OR?: AdPerformanceSnapshotWhereInput[]
+    NOT?: AdPerformanceSnapshotWhereInput | AdPerformanceSnapshotWhereInput[]
+    id?: StringFilter<"AdPerformanceSnapshot"> | string
+    userId?: StringFilter<"AdPerformanceSnapshot"> | string
+    facebookAdAccountId?: StringFilter<"AdPerformanceSnapshot"> | string
+    totalAdsAnalyzed?: IntFilter<"AdPerformanceSnapshot"> | number
+    averageImpressions?: FloatFilter<"AdPerformanceSnapshot"> | number
+    averageCTR?: FloatFilter<"AdPerformanceSnapshot"> | number
+    totalSpend?: FloatFilter<"AdPerformanceSnapshot"> | number
+    totalImpressions?: IntFilter<"AdPerformanceSnapshot"> | number
+    totalClicks?: IntFilter<"AdPerformanceSnapshot"> | number
+    overallCTR?: FloatFilter<"AdPerformanceSnapshot"> | number
+    activeCampaigns?: IntFilter<"AdPerformanceSnapshot"> | number
+    activeAdSets?: IntFilter<"AdPerformanceSnapshot"> | number
+    activeAds?: IntFilter<"AdPerformanceSnapshot"> | number
+    totalAds?: IntFilter<"AdPerformanceSnapshot"> | number
+    createdAt?: DateTimeFilter<"AdPerformanceSnapshot"> | Date | string
+    updatedAt?: DateTimeFilter<"AdPerformanceSnapshot"> | Date | string
+    ads?: AdPerformanceDataListRelationFilter
+  }
+
+  export type AdPerformanceSnapshotOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    facebookAdAccountId?: SortOrder
+    totalAdsAnalyzed?: SortOrder
+    averageImpressions?: SortOrder
+    averageCTR?: SortOrder
+    totalSpend?: SortOrder
+    totalImpressions?: SortOrder
+    totalClicks?: SortOrder
+    overallCTR?: SortOrder
+    activeCampaigns?: SortOrder
+    activeAdSets?: SortOrder
+    activeAds?: SortOrder
+    totalAds?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    ads?: AdPerformanceDataOrderByRelationAggregateInput
+  }
+
+  export type AdPerformanceSnapshotWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: AdPerformanceSnapshotWhereInput | AdPerformanceSnapshotWhereInput[]
+    OR?: AdPerformanceSnapshotWhereInput[]
+    NOT?: AdPerformanceSnapshotWhereInput | AdPerformanceSnapshotWhereInput[]
+    userId?: StringFilter<"AdPerformanceSnapshot"> | string
+    facebookAdAccountId?: StringFilter<"AdPerformanceSnapshot"> | string
+    totalAdsAnalyzed?: IntFilter<"AdPerformanceSnapshot"> | number
+    averageImpressions?: FloatFilter<"AdPerformanceSnapshot"> | number
+    averageCTR?: FloatFilter<"AdPerformanceSnapshot"> | number
+    totalSpend?: FloatFilter<"AdPerformanceSnapshot"> | number
+    totalImpressions?: IntFilter<"AdPerformanceSnapshot"> | number
+    totalClicks?: IntFilter<"AdPerformanceSnapshot"> | number
+    overallCTR?: FloatFilter<"AdPerformanceSnapshot"> | number
+    activeCampaigns?: IntFilter<"AdPerformanceSnapshot"> | number
+    activeAdSets?: IntFilter<"AdPerformanceSnapshot"> | number
+    activeAds?: IntFilter<"AdPerformanceSnapshot"> | number
+    totalAds?: IntFilter<"AdPerformanceSnapshot"> | number
+    createdAt?: DateTimeFilter<"AdPerformanceSnapshot"> | Date | string
+    updatedAt?: DateTimeFilter<"AdPerformanceSnapshot"> | Date | string
+    ads?: AdPerformanceDataListRelationFilter
+  }, "id">
+
+  export type AdPerformanceSnapshotOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    facebookAdAccountId?: SortOrder
+    totalAdsAnalyzed?: SortOrder
+    averageImpressions?: SortOrder
+    averageCTR?: SortOrder
+    totalSpend?: SortOrder
+    totalImpressions?: SortOrder
+    totalClicks?: SortOrder
+    overallCTR?: SortOrder
+    activeCampaigns?: SortOrder
+    activeAdSets?: SortOrder
+    activeAds?: SortOrder
+    totalAds?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: AdPerformanceSnapshotCountOrderByAggregateInput
+    _avg?: AdPerformanceSnapshotAvgOrderByAggregateInput
+    _max?: AdPerformanceSnapshotMaxOrderByAggregateInput
+    _min?: AdPerformanceSnapshotMinOrderByAggregateInput
+    _sum?: AdPerformanceSnapshotSumOrderByAggregateInput
+  }
+
+  export type AdPerformanceSnapshotScalarWhereWithAggregatesInput = {
+    AND?: AdPerformanceSnapshotScalarWhereWithAggregatesInput | AdPerformanceSnapshotScalarWhereWithAggregatesInput[]
+    OR?: AdPerformanceSnapshotScalarWhereWithAggregatesInput[]
+    NOT?: AdPerformanceSnapshotScalarWhereWithAggregatesInput | AdPerformanceSnapshotScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"AdPerformanceSnapshot"> | string
+    userId?: StringWithAggregatesFilter<"AdPerformanceSnapshot"> | string
+    facebookAdAccountId?: StringWithAggregatesFilter<"AdPerformanceSnapshot"> | string
+    totalAdsAnalyzed?: IntWithAggregatesFilter<"AdPerformanceSnapshot"> | number
+    averageImpressions?: FloatWithAggregatesFilter<"AdPerformanceSnapshot"> | number
+    averageCTR?: FloatWithAggregatesFilter<"AdPerformanceSnapshot"> | number
+    totalSpend?: FloatWithAggregatesFilter<"AdPerformanceSnapshot"> | number
+    totalImpressions?: IntWithAggregatesFilter<"AdPerformanceSnapshot"> | number
+    totalClicks?: IntWithAggregatesFilter<"AdPerformanceSnapshot"> | number
+    overallCTR?: FloatWithAggregatesFilter<"AdPerformanceSnapshot"> | number
+    activeCampaigns?: IntWithAggregatesFilter<"AdPerformanceSnapshot"> | number
+    activeAdSets?: IntWithAggregatesFilter<"AdPerformanceSnapshot"> | number
+    activeAds?: IntWithAggregatesFilter<"AdPerformanceSnapshot"> | number
+    totalAds?: IntWithAggregatesFilter<"AdPerformanceSnapshot"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"AdPerformanceSnapshot"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"AdPerformanceSnapshot"> | Date | string
+  }
+
+  export type AdPerformanceDataWhereInput = {
+    AND?: AdPerformanceDataWhereInput | AdPerformanceDataWhereInput[]
+    OR?: AdPerformanceDataWhereInput[]
+    NOT?: AdPerformanceDataWhereInput | AdPerformanceDataWhereInput[]
+    id?: StringFilter<"AdPerformanceData"> | string
+    snapshotId?: StringFilter<"AdPerformanceData"> | string
+    facebookAdId?: StringFilter<"AdPerformanceData"> | string
+    adName?: StringFilter<"AdPerformanceData"> | string
+    impressions?: IntFilter<"AdPerformanceData"> | number
+    ctr?: FloatFilter<"AdPerformanceData"> | number
+    engagementRateRanking?: StringNullableFilter<"AdPerformanceData"> | string | null
+    performanceScore?: IntFilter<"AdPerformanceData"> | number
+    performanceCategory?: StringFilter<"AdPerformanceData"> | string
+    impressionsVsAverage?: StringFilter<"AdPerformanceData"> | string
+    ctrVsAverage?: StringFilter<"AdPerformanceData"> | string
+    engagementRanking?: StringFilter<"AdPerformanceData"> | string
+    reasons?: StringNullableListFilter<"AdPerformanceData">
+    previewUrl?: StringNullableFilter<"AdPerformanceData"> | string | null
+    adCreatedTime?: DateTimeFilter<"AdPerformanceData"> | Date | string
+    createdAt?: DateTimeFilter<"AdPerformanceData"> | Date | string
+    updatedAt?: DateTimeFilter<"AdPerformanceData"> | Date | string
+    snapshot?: XOR<AdPerformanceSnapshotScalarRelationFilter, AdPerformanceSnapshotWhereInput>
+  }
+
+  export type AdPerformanceDataOrderByWithRelationInput = {
+    id?: SortOrder
+    snapshotId?: SortOrder
+    facebookAdId?: SortOrder
+    adName?: SortOrder
+    impressions?: SortOrder
+    ctr?: SortOrder
+    engagementRateRanking?: SortOrderInput | SortOrder
+    performanceScore?: SortOrder
+    performanceCategory?: SortOrder
+    impressionsVsAverage?: SortOrder
+    ctrVsAverage?: SortOrder
+    engagementRanking?: SortOrder
+    reasons?: SortOrder
+    previewUrl?: SortOrderInput | SortOrder
+    adCreatedTime?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    snapshot?: AdPerformanceSnapshotOrderByWithRelationInput
+  }
+
+  export type AdPerformanceDataWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: AdPerformanceDataWhereInput | AdPerformanceDataWhereInput[]
+    OR?: AdPerformanceDataWhereInput[]
+    NOT?: AdPerformanceDataWhereInput | AdPerformanceDataWhereInput[]
+    snapshotId?: StringFilter<"AdPerformanceData"> | string
+    facebookAdId?: StringFilter<"AdPerformanceData"> | string
+    adName?: StringFilter<"AdPerformanceData"> | string
+    impressions?: IntFilter<"AdPerformanceData"> | number
+    ctr?: FloatFilter<"AdPerformanceData"> | number
+    engagementRateRanking?: StringNullableFilter<"AdPerformanceData"> | string | null
+    performanceScore?: IntFilter<"AdPerformanceData"> | number
+    performanceCategory?: StringFilter<"AdPerformanceData"> | string
+    impressionsVsAverage?: StringFilter<"AdPerformanceData"> | string
+    ctrVsAverage?: StringFilter<"AdPerformanceData"> | string
+    engagementRanking?: StringFilter<"AdPerformanceData"> | string
+    reasons?: StringNullableListFilter<"AdPerformanceData">
+    previewUrl?: StringNullableFilter<"AdPerformanceData"> | string | null
+    adCreatedTime?: DateTimeFilter<"AdPerformanceData"> | Date | string
+    createdAt?: DateTimeFilter<"AdPerformanceData"> | Date | string
+    updatedAt?: DateTimeFilter<"AdPerformanceData"> | Date | string
+    snapshot?: XOR<AdPerformanceSnapshotScalarRelationFilter, AdPerformanceSnapshotWhereInput>
+  }, "id">
+
+  export type AdPerformanceDataOrderByWithAggregationInput = {
+    id?: SortOrder
+    snapshotId?: SortOrder
+    facebookAdId?: SortOrder
+    adName?: SortOrder
+    impressions?: SortOrder
+    ctr?: SortOrder
+    engagementRateRanking?: SortOrderInput | SortOrder
+    performanceScore?: SortOrder
+    performanceCategory?: SortOrder
+    impressionsVsAverage?: SortOrder
+    ctrVsAverage?: SortOrder
+    engagementRanking?: SortOrder
+    reasons?: SortOrder
+    previewUrl?: SortOrderInput | SortOrder
+    adCreatedTime?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: AdPerformanceDataCountOrderByAggregateInput
+    _avg?: AdPerformanceDataAvgOrderByAggregateInput
+    _max?: AdPerformanceDataMaxOrderByAggregateInput
+    _min?: AdPerformanceDataMinOrderByAggregateInput
+    _sum?: AdPerformanceDataSumOrderByAggregateInput
+  }
+
+  export type AdPerformanceDataScalarWhereWithAggregatesInput = {
+    AND?: AdPerformanceDataScalarWhereWithAggregatesInput | AdPerformanceDataScalarWhereWithAggregatesInput[]
+    OR?: AdPerformanceDataScalarWhereWithAggregatesInput[]
+    NOT?: AdPerformanceDataScalarWhereWithAggregatesInput | AdPerformanceDataScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"AdPerformanceData"> | string
+    snapshotId?: StringWithAggregatesFilter<"AdPerformanceData"> | string
+    facebookAdId?: StringWithAggregatesFilter<"AdPerformanceData"> | string
+    adName?: StringWithAggregatesFilter<"AdPerformanceData"> | string
+    impressions?: IntWithAggregatesFilter<"AdPerformanceData"> | number
+    ctr?: FloatWithAggregatesFilter<"AdPerformanceData"> | number
+    engagementRateRanking?: StringNullableWithAggregatesFilter<"AdPerformanceData"> | string | null
+    performanceScore?: IntWithAggregatesFilter<"AdPerformanceData"> | number
+    performanceCategory?: StringWithAggregatesFilter<"AdPerformanceData"> | string
+    impressionsVsAverage?: StringWithAggregatesFilter<"AdPerformanceData"> | string
+    ctrVsAverage?: StringWithAggregatesFilter<"AdPerformanceData"> | string
+    engagementRanking?: StringWithAggregatesFilter<"AdPerformanceData"> | string
+    reasons?: StringNullableListFilter<"AdPerformanceData">
+    previewUrl?: StringNullableWithAggregatesFilter<"AdPerformanceData"> | string | null
+    adCreatedTime?: DateTimeWithAggregatesFilter<"AdPerformanceData"> | Date | string
+    createdAt?: DateTimeWithAggregatesFilter<"AdPerformanceData"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"AdPerformanceData"> | Date | string
   }
 
   export type MessageCreateInput = {
@@ -4866,6 +7914,282 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type AdPerformanceSnapshotCreateInput = {
+    id?: string
+    userId: string
+    facebookAdAccountId: string
+    totalAdsAnalyzed: number
+    averageImpressions: number
+    averageCTR: number
+    totalSpend?: number
+    totalImpressions?: number
+    totalClicks?: number
+    overallCTR?: number
+    activeCampaigns?: number
+    activeAdSets?: number
+    activeAds?: number
+    totalAds?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ads?: AdPerformanceDataCreateNestedManyWithoutSnapshotInput
+  }
+
+  export type AdPerformanceSnapshotUncheckedCreateInput = {
+    id?: string
+    userId: string
+    facebookAdAccountId: string
+    totalAdsAnalyzed: number
+    averageImpressions: number
+    averageCTR: number
+    totalSpend?: number
+    totalImpressions?: number
+    totalClicks?: number
+    overallCTR?: number
+    activeCampaigns?: number
+    activeAdSets?: number
+    activeAds?: number
+    totalAds?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ads?: AdPerformanceDataUncheckedCreateNestedManyWithoutSnapshotInput
+  }
+
+  export type AdPerformanceSnapshotUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    facebookAdAccountId?: StringFieldUpdateOperationsInput | string
+    totalAdsAnalyzed?: IntFieldUpdateOperationsInput | number
+    averageImpressions?: FloatFieldUpdateOperationsInput | number
+    averageCTR?: FloatFieldUpdateOperationsInput | number
+    totalSpend?: FloatFieldUpdateOperationsInput | number
+    totalImpressions?: IntFieldUpdateOperationsInput | number
+    totalClicks?: IntFieldUpdateOperationsInput | number
+    overallCTR?: FloatFieldUpdateOperationsInput | number
+    activeCampaigns?: IntFieldUpdateOperationsInput | number
+    activeAdSets?: IntFieldUpdateOperationsInput | number
+    activeAds?: IntFieldUpdateOperationsInput | number
+    totalAds?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ads?: AdPerformanceDataUpdateManyWithoutSnapshotNestedInput
+  }
+
+  export type AdPerformanceSnapshotUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    facebookAdAccountId?: StringFieldUpdateOperationsInput | string
+    totalAdsAnalyzed?: IntFieldUpdateOperationsInput | number
+    averageImpressions?: FloatFieldUpdateOperationsInput | number
+    averageCTR?: FloatFieldUpdateOperationsInput | number
+    totalSpend?: FloatFieldUpdateOperationsInput | number
+    totalImpressions?: IntFieldUpdateOperationsInput | number
+    totalClicks?: IntFieldUpdateOperationsInput | number
+    overallCTR?: FloatFieldUpdateOperationsInput | number
+    activeCampaigns?: IntFieldUpdateOperationsInput | number
+    activeAdSets?: IntFieldUpdateOperationsInput | number
+    activeAds?: IntFieldUpdateOperationsInput | number
+    totalAds?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ads?: AdPerformanceDataUncheckedUpdateManyWithoutSnapshotNestedInput
+  }
+
+  export type AdPerformanceSnapshotCreateManyInput = {
+    id?: string
+    userId: string
+    facebookAdAccountId: string
+    totalAdsAnalyzed: number
+    averageImpressions: number
+    averageCTR: number
+    totalSpend?: number
+    totalImpressions?: number
+    totalClicks?: number
+    overallCTR?: number
+    activeCampaigns?: number
+    activeAdSets?: number
+    activeAds?: number
+    totalAds?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AdPerformanceSnapshotUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    facebookAdAccountId?: StringFieldUpdateOperationsInput | string
+    totalAdsAnalyzed?: IntFieldUpdateOperationsInput | number
+    averageImpressions?: FloatFieldUpdateOperationsInput | number
+    averageCTR?: FloatFieldUpdateOperationsInput | number
+    totalSpend?: FloatFieldUpdateOperationsInput | number
+    totalImpressions?: IntFieldUpdateOperationsInput | number
+    totalClicks?: IntFieldUpdateOperationsInput | number
+    overallCTR?: FloatFieldUpdateOperationsInput | number
+    activeCampaigns?: IntFieldUpdateOperationsInput | number
+    activeAdSets?: IntFieldUpdateOperationsInput | number
+    activeAds?: IntFieldUpdateOperationsInput | number
+    totalAds?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AdPerformanceSnapshotUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    facebookAdAccountId?: StringFieldUpdateOperationsInput | string
+    totalAdsAnalyzed?: IntFieldUpdateOperationsInput | number
+    averageImpressions?: FloatFieldUpdateOperationsInput | number
+    averageCTR?: FloatFieldUpdateOperationsInput | number
+    totalSpend?: FloatFieldUpdateOperationsInput | number
+    totalImpressions?: IntFieldUpdateOperationsInput | number
+    totalClicks?: IntFieldUpdateOperationsInput | number
+    overallCTR?: FloatFieldUpdateOperationsInput | number
+    activeCampaigns?: IntFieldUpdateOperationsInput | number
+    activeAdSets?: IntFieldUpdateOperationsInput | number
+    activeAds?: IntFieldUpdateOperationsInput | number
+    totalAds?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AdPerformanceDataCreateInput = {
+    id?: string
+    facebookAdId: string
+    adName: string
+    impressions: number
+    ctr: number
+    engagementRateRanking?: string | null
+    performanceScore: number
+    performanceCategory: string
+    impressionsVsAverage: string
+    ctrVsAverage: string
+    engagementRanking: string
+    reasons?: AdPerformanceDataCreatereasonsInput | string[]
+    previewUrl?: string | null
+    adCreatedTime: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    snapshot: AdPerformanceSnapshotCreateNestedOneWithoutAdsInput
+  }
+
+  export type AdPerformanceDataUncheckedCreateInput = {
+    id?: string
+    snapshotId: string
+    facebookAdId: string
+    adName: string
+    impressions: number
+    ctr: number
+    engagementRateRanking?: string | null
+    performanceScore: number
+    performanceCategory: string
+    impressionsVsAverage: string
+    ctrVsAverage: string
+    engagementRanking: string
+    reasons?: AdPerformanceDataCreatereasonsInput | string[]
+    previewUrl?: string | null
+    adCreatedTime: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AdPerformanceDataUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    facebookAdId?: StringFieldUpdateOperationsInput | string
+    adName?: StringFieldUpdateOperationsInput | string
+    impressions?: IntFieldUpdateOperationsInput | number
+    ctr?: FloatFieldUpdateOperationsInput | number
+    engagementRateRanking?: NullableStringFieldUpdateOperationsInput | string | null
+    performanceScore?: IntFieldUpdateOperationsInput | number
+    performanceCategory?: StringFieldUpdateOperationsInput | string
+    impressionsVsAverage?: StringFieldUpdateOperationsInput | string
+    ctrVsAverage?: StringFieldUpdateOperationsInput | string
+    engagementRanking?: StringFieldUpdateOperationsInput | string
+    reasons?: AdPerformanceDataUpdatereasonsInput | string[]
+    previewUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    adCreatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    snapshot?: AdPerformanceSnapshotUpdateOneRequiredWithoutAdsNestedInput
+  }
+
+  export type AdPerformanceDataUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    snapshotId?: StringFieldUpdateOperationsInput | string
+    facebookAdId?: StringFieldUpdateOperationsInput | string
+    adName?: StringFieldUpdateOperationsInput | string
+    impressions?: IntFieldUpdateOperationsInput | number
+    ctr?: FloatFieldUpdateOperationsInput | number
+    engagementRateRanking?: NullableStringFieldUpdateOperationsInput | string | null
+    performanceScore?: IntFieldUpdateOperationsInput | number
+    performanceCategory?: StringFieldUpdateOperationsInput | string
+    impressionsVsAverage?: StringFieldUpdateOperationsInput | string
+    ctrVsAverage?: StringFieldUpdateOperationsInput | string
+    engagementRanking?: StringFieldUpdateOperationsInput | string
+    reasons?: AdPerformanceDataUpdatereasonsInput | string[]
+    previewUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    adCreatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AdPerformanceDataCreateManyInput = {
+    id?: string
+    snapshotId: string
+    facebookAdId: string
+    adName: string
+    impressions: number
+    ctr: number
+    engagementRateRanking?: string | null
+    performanceScore: number
+    performanceCategory: string
+    impressionsVsAverage: string
+    ctrVsAverage: string
+    engagementRanking: string
+    reasons?: AdPerformanceDataCreatereasonsInput | string[]
+    previewUrl?: string | null
+    adCreatedTime: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AdPerformanceDataUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    facebookAdId?: StringFieldUpdateOperationsInput | string
+    adName?: StringFieldUpdateOperationsInput | string
+    impressions?: IntFieldUpdateOperationsInput | number
+    ctr?: FloatFieldUpdateOperationsInput | number
+    engagementRateRanking?: NullableStringFieldUpdateOperationsInput | string | null
+    performanceScore?: IntFieldUpdateOperationsInput | number
+    performanceCategory?: StringFieldUpdateOperationsInput | string
+    impressionsVsAverage?: StringFieldUpdateOperationsInput | string
+    ctrVsAverage?: StringFieldUpdateOperationsInput | string
+    engagementRanking?: StringFieldUpdateOperationsInput | string
+    reasons?: AdPerformanceDataUpdatereasonsInput | string[]
+    previewUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    adCreatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AdPerformanceDataUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    snapshotId?: StringFieldUpdateOperationsInput | string
+    facebookAdId?: StringFieldUpdateOperationsInput | string
+    adName?: StringFieldUpdateOperationsInput | string
+    impressions?: IntFieldUpdateOperationsInput | number
+    ctr?: FloatFieldUpdateOperationsInput | number
+    engagementRateRanking?: NullableStringFieldUpdateOperationsInput | string | null
+    performanceScore?: IntFieldUpdateOperationsInput | number
+    performanceCategory?: StringFieldUpdateOperationsInput | string
+    impressionsVsAverage?: StringFieldUpdateOperationsInput | string
+    ctrVsAverage?: StringFieldUpdateOperationsInput | string
+    engagementRanking?: StringFieldUpdateOperationsInput | string
+    reasons?: AdPerformanceDataUpdatereasonsInput | string[]
+    previewUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    adCreatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -5053,6 +8377,276 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type FloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type AdPerformanceDataListRelationFilter = {
+    every?: AdPerformanceDataWhereInput
+    some?: AdPerformanceDataWhereInput
+    none?: AdPerformanceDataWhereInput
+  }
+
+  export type AdPerformanceDataOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type AdPerformanceSnapshotCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    facebookAdAccountId?: SortOrder
+    totalAdsAnalyzed?: SortOrder
+    averageImpressions?: SortOrder
+    averageCTR?: SortOrder
+    totalSpend?: SortOrder
+    totalImpressions?: SortOrder
+    totalClicks?: SortOrder
+    overallCTR?: SortOrder
+    activeCampaigns?: SortOrder
+    activeAdSets?: SortOrder
+    activeAds?: SortOrder
+    totalAds?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type AdPerformanceSnapshotAvgOrderByAggregateInput = {
+    totalAdsAnalyzed?: SortOrder
+    averageImpressions?: SortOrder
+    averageCTR?: SortOrder
+    totalSpend?: SortOrder
+    totalImpressions?: SortOrder
+    totalClicks?: SortOrder
+    overallCTR?: SortOrder
+    activeCampaigns?: SortOrder
+    activeAdSets?: SortOrder
+    activeAds?: SortOrder
+    totalAds?: SortOrder
+  }
+
+  export type AdPerformanceSnapshotMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    facebookAdAccountId?: SortOrder
+    totalAdsAnalyzed?: SortOrder
+    averageImpressions?: SortOrder
+    averageCTR?: SortOrder
+    totalSpend?: SortOrder
+    totalImpressions?: SortOrder
+    totalClicks?: SortOrder
+    overallCTR?: SortOrder
+    activeCampaigns?: SortOrder
+    activeAdSets?: SortOrder
+    activeAds?: SortOrder
+    totalAds?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type AdPerformanceSnapshotMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    facebookAdAccountId?: SortOrder
+    totalAdsAnalyzed?: SortOrder
+    averageImpressions?: SortOrder
+    averageCTR?: SortOrder
+    totalSpend?: SortOrder
+    totalImpressions?: SortOrder
+    totalClicks?: SortOrder
+    overallCTR?: SortOrder
+    activeCampaigns?: SortOrder
+    activeAdSets?: SortOrder
+    activeAds?: SortOrder
+    totalAds?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type AdPerformanceSnapshotSumOrderByAggregateInput = {
+    totalAdsAnalyzed?: SortOrder
+    averageImpressions?: SortOrder
+    averageCTR?: SortOrder
+    totalSpend?: SortOrder
+    totalImpressions?: SortOrder
+    totalClicks?: SortOrder
+    overallCTR?: SortOrder
+    activeCampaigns?: SortOrder
+    activeAdSets?: SortOrder
+    activeAds?: SortOrder
+    totalAds?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type StringNullableListFilter<$PrismaModel = never> = {
+    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    has?: string | StringFieldRefInput<$PrismaModel> | null
+    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
+    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
+  }
+
+  export type AdPerformanceSnapshotScalarRelationFilter = {
+    is?: AdPerformanceSnapshotWhereInput
+    isNot?: AdPerformanceSnapshotWhereInput
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
+  export type AdPerformanceDataCountOrderByAggregateInput = {
+    id?: SortOrder
+    snapshotId?: SortOrder
+    facebookAdId?: SortOrder
+    adName?: SortOrder
+    impressions?: SortOrder
+    ctr?: SortOrder
+    engagementRateRanking?: SortOrder
+    performanceScore?: SortOrder
+    performanceCategory?: SortOrder
+    impressionsVsAverage?: SortOrder
+    ctrVsAverage?: SortOrder
+    engagementRanking?: SortOrder
+    reasons?: SortOrder
+    previewUrl?: SortOrder
+    adCreatedTime?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type AdPerformanceDataAvgOrderByAggregateInput = {
+    impressions?: SortOrder
+    ctr?: SortOrder
+    performanceScore?: SortOrder
+  }
+
+  export type AdPerformanceDataMaxOrderByAggregateInput = {
+    id?: SortOrder
+    snapshotId?: SortOrder
+    facebookAdId?: SortOrder
+    adName?: SortOrder
+    impressions?: SortOrder
+    ctr?: SortOrder
+    engagementRateRanking?: SortOrder
+    performanceScore?: SortOrder
+    performanceCategory?: SortOrder
+    impressionsVsAverage?: SortOrder
+    ctrVsAverage?: SortOrder
+    engagementRanking?: SortOrder
+    previewUrl?: SortOrder
+    adCreatedTime?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type AdPerformanceDataMinOrderByAggregateInput = {
+    id?: SortOrder
+    snapshotId?: SortOrder
+    facebookAdId?: SortOrder
+    adName?: SortOrder
+    impressions?: SortOrder
+    ctr?: SortOrder
+    engagementRateRanking?: SortOrder
+    performanceScore?: SortOrder
+    performanceCategory?: SortOrder
+    impressionsVsAverage?: SortOrder
+    ctrVsAverage?: SortOrder
+    engagementRanking?: SortOrder
+    previewUrl?: SortOrder
+    adCreatedTime?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type AdPerformanceDataSumOrderByAggregateInput = {
+    impressions?: SortOrder
+    ctr?: SortOrder
+    performanceScore?: SortOrder
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -5119,6 +8713,91 @@ export namespace Prisma {
     upsert?: LinkedAccountUpsertWithoutAdAccountsInput
     connect?: LinkedAccountWhereUniqueInput
     update?: XOR<XOR<LinkedAccountUpdateToOneWithWhereWithoutAdAccountsInput, LinkedAccountUpdateWithoutAdAccountsInput>, LinkedAccountUncheckedUpdateWithoutAdAccountsInput>
+  }
+
+  export type AdPerformanceDataCreateNestedManyWithoutSnapshotInput = {
+    create?: XOR<AdPerformanceDataCreateWithoutSnapshotInput, AdPerformanceDataUncheckedCreateWithoutSnapshotInput> | AdPerformanceDataCreateWithoutSnapshotInput[] | AdPerformanceDataUncheckedCreateWithoutSnapshotInput[]
+    connectOrCreate?: AdPerformanceDataCreateOrConnectWithoutSnapshotInput | AdPerformanceDataCreateOrConnectWithoutSnapshotInput[]
+    createMany?: AdPerformanceDataCreateManySnapshotInputEnvelope
+    connect?: AdPerformanceDataWhereUniqueInput | AdPerformanceDataWhereUniqueInput[]
+  }
+
+  export type AdPerformanceDataUncheckedCreateNestedManyWithoutSnapshotInput = {
+    create?: XOR<AdPerformanceDataCreateWithoutSnapshotInput, AdPerformanceDataUncheckedCreateWithoutSnapshotInput> | AdPerformanceDataCreateWithoutSnapshotInput[] | AdPerformanceDataUncheckedCreateWithoutSnapshotInput[]
+    connectOrCreate?: AdPerformanceDataCreateOrConnectWithoutSnapshotInput | AdPerformanceDataCreateOrConnectWithoutSnapshotInput[]
+    createMany?: AdPerformanceDataCreateManySnapshotInputEnvelope
+    connect?: AdPerformanceDataWhereUniqueInput | AdPerformanceDataWhereUniqueInput[]
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type FloatFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type AdPerformanceDataUpdateManyWithoutSnapshotNestedInput = {
+    create?: XOR<AdPerformanceDataCreateWithoutSnapshotInput, AdPerformanceDataUncheckedCreateWithoutSnapshotInput> | AdPerformanceDataCreateWithoutSnapshotInput[] | AdPerformanceDataUncheckedCreateWithoutSnapshotInput[]
+    connectOrCreate?: AdPerformanceDataCreateOrConnectWithoutSnapshotInput | AdPerformanceDataCreateOrConnectWithoutSnapshotInput[]
+    upsert?: AdPerformanceDataUpsertWithWhereUniqueWithoutSnapshotInput | AdPerformanceDataUpsertWithWhereUniqueWithoutSnapshotInput[]
+    createMany?: AdPerformanceDataCreateManySnapshotInputEnvelope
+    set?: AdPerformanceDataWhereUniqueInput | AdPerformanceDataWhereUniqueInput[]
+    disconnect?: AdPerformanceDataWhereUniqueInput | AdPerformanceDataWhereUniqueInput[]
+    delete?: AdPerformanceDataWhereUniqueInput | AdPerformanceDataWhereUniqueInput[]
+    connect?: AdPerformanceDataWhereUniqueInput | AdPerformanceDataWhereUniqueInput[]
+    update?: AdPerformanceDataUpdateWithWhereUniqueWithoutSnapshotInput | AdPerformanceDataUpdateWithWhereUniqueWithoutSnapshotInput[]
+    updateMany?: AdPerformanceDataUpdateManyWithWhereWithoutSnapshotInput | AdPerformanceDataUpdateManyWithWhereWithoutSnapshotInput[]
+    deleteMany?: AdPerformanceDataScalarWhereInput | AdPerformanceDataScalarWhereInput[]
+  }
+
+  export type AdPerformanceDataUncheckedUpdateManyWithoutSnapshotNestedInput = {
+    create?: XOR<AdPerformanceDataCreateWithoutSnapshotInput, AdPerformanceDataUncheckedCreateWithoutSnapshotInput> | AdPerformanceDataCreateWithoutSnapshotInput[] | AdPerformanceDataUncheckedCreateWithoutSnapshotInput[]
+    connectOrCreate?: AdPerformanceDataCreateOrConnectWithoutSnapshotInput | AdPerformanceDataCreateOrConnectWithoutSnapshotInput[]
+    upsert?: AdPerformanceDataUpsertWithWhereUniqueWithoutSnapshotInput | AdPerformanceDataUpsertWithWhereUniqueWithoutSnapshotInput[]
+    createMany?: AdPerformanceDataCreateManySnapshotInputEnvelope
+    set?: AdPerformanceDataWhereUniqueInput | AdPerformanceDataWhereUniqueInput[]
+    disconnect?: AdPerformanceDataWhereUniqueInput | AdPerformanceDataWhereUniqueInput[]
+    delete?: AdPerformanceDataWhereUniqueInput | AdPerformanceDataWhereUniqueInput[]
+    connect?: AdPerformanceDataWhereUniqueInput | AdPerformanceDataWhereUniqueInput[]
+    update?: AdPerformanceDataUpdateWithWhereUniqueWithoutSnapshotInput | AdPerformanceDataUpdateWithWhereUniqueWithoutSnapshotInput[]
+    updateMany?: AdPerformanceDataUpdateManyWithWhereWithoutSnapshotInput | AdPerformanceDataUpdateManyWithWhereWithoutSnapshotInput[]
+    deleteMany?: AdPerformanceDataScalarWhereInput | AdPerformanceDataScalarWhereInput[]
+  }
+
+  export type AdPerformanceDataCreatereasonsInput = {
+    set: string[]
+  }
+
+  export type AdPerformanceSnapshotCreateNestedOneWithoutAdsInput = {
+    create?: XOR<AdPerformanceSnapshotCreateWithoutAdsInput, AdPerformanceSnapshotUncheckedCreateWithoutAdsInput>
+    connectOrCreate?: AdPerformanceSnapshotCreateOrConnectWithoutAdsInput
+    connect?: AdPerformanceSnapshotWhereUniqueInput
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
+  export type AdPerformanceDataUpdatereasonsInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type AdPerformanceSnapshotUpdateOneRequiredWithoutAdsNestedInput = {
+    create?: XOR<AdPerformanceSnapshotCreateWithoutAdsInput, AdPerformanceSnapshotUncheckedCreateWithoutAdsInput>
+    connectOrCreate?: AdPerformanceSnapshotCreateOrConnectWithoutAdsInput
+    upsert?: AdPerformanceSnapshotUpsertWithoutAdsInput
+    connect?: AdPerformanceSnapshotWhereUniqueInput
+    update?: XOR<XOR<AdPerformanceSnapshotUpdateToOneWithWhereWithoutAdsInput, AdPerformanceSnapshotUpdateWithoutAdsInput>, AdPerformanceSnapshotUncheckedUpdateWithoutAdsInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -5199,6 +8878,91 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type AdAccountCreateWithoutLinkedAccountInput = {
@@ -5322,6 +9086,185 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type AdPerformanceDataCreateWithoutSnapshotInput = {
+    id?: string
+    facebookAdId: string
+    adName: string
+    impressions: number
+    ctr: number
+    engagementRateRanking?: string | null
+    performanceScore: number
+    performanceCategory: string
+    impressionsVsAverage: string
+    ctrVsAverage: string
+    engagementRanking: string
+    reasons?: AdPerformanceDataCreatereasonsInput | string[]
+    previewUrl?: string | null
+    adCreatedTime: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AdPerformanceDataUncheckedCreateWithoutSnapshotInput = {
+    id?: string
+    facebookAdId: string
+    adName: string
+    impressions: number
+    ctr: number
+    engagementRateRanking?: string | null
+    performanceScore: number
+    performanceCategory: string
+    impressionsVsAverage: string
+    ctrVsAverage: string
+    engagementRanking: string
+    reasons?: AdPerformanceDataCreatereasonsInput | string[]
+    previewUrl?: string | null
+    adCreatedTime: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AdPerformanceDataCreateOrConnectWithoutSnapshotInput = {
+    where: AdPerformanceDataWhereUniqueInput
+    create: XOR<AdPerformanceDataCreateWithoutSnapshotInput, AdPerformanceDataUncheckedCreateWithoutSnapshotInput>
+  }
+
+  export type AdPerformanceDataCreateManySnapshotInputEnvelope = {
+    data: AdPerformanceDataCreateManySnapshotInput | AdPerformanceDataCreateManySnapshotInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type AdPerformanceDataUpsertWithWhereUniqueWithoutSnapshotInput = {
+    where: AdPerformanceDataWhereUniqueInput
+    update: XOR<AdPerformanceDataUpdateWithoutSnapshotInput, AdPerformanceDataUncheckedUpdateWithoutSnapshotInput>
+    create: XOR<AdPerformanceDataCreateWithoutSnapshotInput, AdPerformanceDataUncheckedCreateWithoutSnapshotInput>
+  }
+
+  export type AdPerformanceDataUpdateWithWhereUniqueWithoutSnapshotInput = {
+    where: AdPerformanceDataWhereUniqueInput
+    data: XOR<AdPerformanceDataUpdateWithoutSnapshotInput, AdPerformanceDataUncheckedUpdateWithoutSnapshotInput>
+  }
+
+  export type AdPerformanceDataUpdateManyWithWhereWithoutSnapshotInput = {
+    where: AdPerformanceDataScalarWhereInput
+    data: XOR<AdPerformanceDataUpdateManyMutationInput, AdPerformanceDataUncheckedUpdateManyWithoutSnapshotInput>
+  }
+
+  export type AdPerformanceDataScalarWhereInput = {
+    AND?: AdPerformanceDataScalarWhereInput | AdPerformanceDataScalarWhereInput[]
+    OR?: AdPerformanceDataScalarWhereInput[]
+    NOT?: AdPerformanceDataScalarWhereInput | AdPerformanceDataScalarWhereInput[]
+    id?: StringFilter<"AdPerformanceData"> | string
+    snapshotId?: StringFilter<"AdPerformanceData"> | string
+    facebookAdId?: StringFilter<"AdPerformanceData"> | string
+    adName?: StringFilter<"AdPerformanceData"> | string
+    impressions?: IntFilter<"AdPerformanceData"> | number
+    ctr?: FloatFilter<"AdPerformanceData"> | number
+    engagementRateRanking?: StringNullableFilter<"AdPerformanceData"> | string | null
+    performanceScore?: IntFilter<"AdPerformanceData"> | number
+    performanceCategory?: StringFilter<"AdPerformanceData"> | string
+    impressionsVsAverage?: StringFilter<"AdPerformanceData"> | string
+    ctrVsAverage?: StringFilter<"AdPerformanceData"> | string
+    engagementRanking?: StringFilter<"AdPerformanceData"> | string
+    reasons?: StringNullableListFilter<"AdPerformanceData">
+    previewUrl?: StringNullableFilter<"AdPerformanceData"> | string | null
+    adCreatedTime?: DateTimeFilter<"AdPerformanceData"> | Date | string
+    createdAt?: DateTimeFilter<"AdPerformanceData"> | Date | string
+    updatedAt?: DateTimeFilter<"AdPerformanceData"> | Date | string
+  }
+
+  export type AdPerformanceSnapshotCreateWithoutAdsInput = {
+    id?: string
+    userId: string
+    facebookAdAccountId: string
+    totalAdsAnalyzed: number
+    averageImpressions: number
+    averageCTR: number
+    totalSpend?: number
+    totalImpressions?: number
+    totalClicks?: number
+    overallCTR?: number
+    activeCampaigns?: number
+    activeAdSets?: number
+    activeAds?: number
+    totalAds?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AdPerformanceSnapshotUncheckedCreateWithoutAdsInput = {
+    id?: string
+    userId: string
+    facebookAdAccountId: string
+    totalAdsAnalyzed: number
+    averageImpressions: number
+    averageCTR: number
+    totalSpend?: number
+    totalImpressions?: number
+    totalClicks?: number
+    overallCTR?: number
+    activeCampaigns?: number
+    activeAdSets?: number
+    activeAds?: number
+    totalAds?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AdPerformanceSnapshotCreateOrConnectWithoutAdsInput = {
+    where: AdPerformanceSnapshotWhereUniqueInput
+    create: XOR<AdPerformanceSnapshotCreateWithoutAdsInput, AdPerformanceSnapshotUncheckedCreateWithoutAdsInput>
+  }
+
+  export type AdPerformanceSnapshotUpsertWithoutAdsInput = {
+    update: XOR<AdPerformanceSnapshotUpdateWithoutAdsInput, AdPerformanceSnapshotUncheckedUpdateWithoutAdsInput>
+    create: XOR<AdPerformanceSnapshotCreateWithoutAdsInput, AdPerformanceSnapshotUncheckedCreateWithoutAdsInput>
+    where?: AdPerformanceSnapshotWhereInput
+  }
+
+  export type AdPerformanceSnapshotUpdateToOneWithWhereWithoutAdsInput = {
+    where?: AdPerformanceSnapshotWhereInput
+    data: XOR<AdPerformanceSnapshotUpdateWithoutAdsInput, AdPerformanceSnapshotUncheckedUpdateWithoutAdsInput>
+  }
+
+  export type AdPerformanceSnapshotUpdateWithoutAdsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    facebookAdAccountId?: StringFieldUpdateOperationsInput | string
+    totalAdsAnalyzed?: IntFieldUpdateOperationsInput | number
+    averageImpressions?: FloatFieldUpdateOperationsInput | number
+    averageCTR?: FloatFieldUpdateOperationsInput | number
+    totalSpend?: FloatFieldUpdateOperationsInput | number
+    totalImpressions?: IntFieldUpdateOperationsInput | number
+    totalClicks?: IntFieldUpdateOperationsInput | number
+    overallCTR?: FloatFieldUpdateOperationsInput | number
+    activeCampaigns?: IntFieldUpdateOperationsInput | number
+    activeAdSets?: IntFieldUpdateOperationsInput | number
+    activeAds?: IntFieldUpdateOperationsInput | number
+    totalAds?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AdPerformanceSnapshotUncheckedUpdateWithoutAdsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    facebookAdAccountId?: StringFieldUpdateOperationsInput | string
+    totalAdsAnalyzed?: IntFieldUpdateOperationsInput | number
+    averageImpressions?: FloatFieldUpdateOperationsInput | number
+    averageCTR?: FloatFieldUpdateOperationsInput | number
+    totalSpend?: FloatFieldUpdateOperationsInput | number
+    totalImpressions?: IntFieldUpdateOperationsInput | number
+    totalClicks?: IntFieldUpdateOperationsInput | number
+    overallCTR?: FloatFieldUpdateOperationsInput | number
+    activeCampaigns?: IntFieldUpdateOperationsInput | number
+    activeAdSets?: IntFieldUpdateOperationsInput | number
+    activeAds?: IntFieldUpdateOperationsInput | number
+    totalAds?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type AdAccountCreateManyLinkedAccountInput = {
     id?: string
     userId: string
@@ -5354,6 +9297,82 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     accountId?: StringFieldUpdateOperationsInput | string
     accountName?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AdPerformanceDataCreateManySnapshotInput = {
+    id?: string
+    facebookAdId: string
+    adName: string
+    impressions: number
+    ctr: number
+    engagementRateRanking?: string | null
+    performanceScore: number
+    performanceCategory: string
+    impressionsVsAverage: string
+    ctrVsAverage: string
+    engagementRanking: string
+    reasons?: AdPerformanceDataCreatereasonsInput | string[]
+    previewUrl?: string | null
+    adCreatedTime: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AdPerformanceDataUpdateWithoutSnapshotInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    facebookAdId?: StringFieldUpdateOperationsInput | string
+    adName?: StringFieldUpdateOperationsInput | string
+    impressions?: IntFieldUpdateOperationsInput | number
+    ctr?: FloatFieldUpdateOperationsInput | number
+    engagementRateRanking?: NullableStringFieldUpdateOperationsInput | string | null
+    performanceScore?: IntFieldUpdateOperationsInput | number
+    performanceCategory?: StringFieldUpdateOperationsInput | string
+    impressionsVsAverage?: StringFieldUpdateOperationsInput | string
+    ctrVsAverage?: StringFieldUpdateOperationsInput | string
+    engagementRanking?: StringFieldUpdateOperationsInput | string
+    reasons?: AdPerformanceDataUpdatereasonsInput | string[]
+    previewUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    adCreatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AdPerformanceDataUncheckedUpdateWithoutSnapshotInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    facebookAdId?: StringFieldUpdateOperationsInput | string
+    adName?: StringFieldUpdateOperationsInput | string
+    impressions?: IntFieldUpdateOperationsInput | number
+    ctr?: FloatFieldUpdateOperationsInput | number
+    engagementRateRanking?: NullableStringFieldUpdateOperationsInput | string | null
+    performanceScore?: IntFieldUpdateOperationsInput | number
+    performanceCategory?: StringFieldUpdateOperationsInput | string
+    impressionsVsAverage?: StringFieldUpdateOperationsInput | string
+    ctrVsAverage?: StringFieldUpdateOperationsInput | string
+    engagementRanking?: StringFieldUpdateOperationsInput | string
+    reasons?: AdPerformanceDataUpdatereasonsInput | string[]
+    previewUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    adCreatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AdPerformanceDataUncheckedUpdateManyWithoutSnapshotInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    facebookAdId?: StringFieldUpdateOperationsInput | string
+    adName?: StringFieldUpdateOperationsInput | string
+    impressions?: IntFieldUpdateOperationsInput | number
+    ctr?: FloatFieldUpdateOperationsInput | number
+    engagementRateRanking?: NullableStringFieldUpdateOperationsInput | string | null
+    performanceScore?: IntFieldUpdateOperationsInput | number
+    performanceCategory?: StringFieldUpdateOperationsInput | string
+    impressionsVsAverage?: StringFieldUpdateOperationsInput | string
+    ctrVsAverage?: StringFieldUpdateOperationsInput | string
+    engagementRanking?: StringFieldUpdateOperationsInput | string
+    reasons?: AdPerformanceDataUpdatereasonsInput | string[]
+    previewUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    adCreatedTime?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

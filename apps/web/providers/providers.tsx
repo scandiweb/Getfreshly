@@ -8,8 +8,8 @@ import ReduxProvider from '@/redux/redux-provider';
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <ClerkProvider
-      signInForceRedirectUrl="/chat"
-      signUpForceRedirectUrl="/chat"
+      signInForceRedirectUrl="/dashboard"
+      signUpForceRedirectUrl="/dashboard"
     >
       <ReduxProvider>
         <NextThemesProvider

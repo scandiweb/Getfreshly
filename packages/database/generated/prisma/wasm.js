@@ -152,6 +152,45 @@ exports.Prisma.AdAccountScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.AdPerformanceSnapshotScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  facebookAdAccountId: 'facebookAdAccountId',
+  totalAdsAnalyzed: 'totalAdsAnalyzed',
+  averageImpressions: 'averageImpressions',
+  averageCTR: 'averageCTR',
+  totalSpend: 'totalSpend',
+  totalImpressions: 'totalImpressions',
+  totalClicks: 'totalClicks',
+  overallCTR: 'overallCTR',
+  activeCampaigns: 'activeCampaigns',
+  activeAdSets: 'activeAdSets',
+  activeAds: 'activeAds',
+  totalAds: 'totalAds',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.AdPerformanceDataScalarFieldEnum = {
+  id: 'id',
+  snapshotId: 'snapshotId',
+  facebookAdId: 'facebookAdId',
+  adName: 'adName',
+  impressions: 'impressions',
+  ctr: 'ctr',
+  engagementRateRanking: 'engagementRateRanking',
+  performanceScore: 'performanceScore',
+  performanceCategory: 'performanceCategory',
+  impressionsVsAverage: 'impressionsVsAverage',
+  ctrVsAverage: 'ctrVsAverage',
+  engagementRanking: 'engagementRanking',
+  reasons: 'reasons',
+  previewUrl: 'previewUrl',
+  adCreatedTime: 'adCreatedTime',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -162,11 +201,18 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 
 exports.Prisma.ModelName = {
   Message: 'Message',
   LinkedAccount: 'LinkedAccount',
-  AdAccount: 'AdAccount'
+  AdAccount: 'AdAccount',
+  AdPerformanceSnapshot: 'AdPerformanceSnapshot',
+  AdPerformanceData: 'AdPerformanceData'
 };
 
 /**

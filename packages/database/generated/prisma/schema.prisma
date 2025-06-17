@@ -54,3 +54,51 @@ model AdAccount {
 
   @@index([linkedAccountId])
 }
+
+model AdPerformanceSnapshot {
+  id                  String              @id @default(cuid())
+  userId              String
+  facebookAdAccountId String // Facebook's actual ad account ID
+  totalAdsAnalyzed    Int
+  averageImpressions  Float
+  averageCTR          Float
+  // Cached metrics data
+  totalSpend          Float               @default(0)
+  totalImpressions    Int                 @default(0)
+  totalClicks         Int                 @default(0)
+  overallCTR          Float               @default(0)
+  activeCampaigns     Int                 @default(0)
+  activeAdSets        Int                 @default(0)
+  activeAds           Int                 @default(0)
+  totalAds            Int                 @default(0)
+  ads                 AdPerformanceData[]
+  createdAt           DateTime            @default(now())
+  updatedAt           DateTime            @updatedAt
+
+  @@index([userId, facebookAdAccountId])
+  @@index([createdAt])
+}
+
+model AdPerformanceData {
+  id                    String                @id @default(cuid())
+  snapshotId            String
+  snapshot              AdPerformanceSnapshot @relation(fields: [snapshotId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  facebookAdId          String // Facebook's ad ID
+  adName                String
+  impressions           Int
+  ctr                   Float
+  engagementRateRanking String?
+  performanceScore      Int
+  performanceCategory   String // "best" or "worst"
+  impressionsVsAverage  String // "above", "below", "average"
+  ctrVsAverage          String // "above", "below", "average"
+  engagementRanking     String // "above", "below", "average", "unknown"
+  reasons               String[] // JSON array of reasons
+  previewUrl            String? // Cached ad preview URL
+  adCreatedTime         DateTime
+  createdAt             DateTime              @default(now())
+  updatedAt             DateTime              @updatedAt
+
+  @@index([snapshotId])
+  @@index([facebookAdId])
+}

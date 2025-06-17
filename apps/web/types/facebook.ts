@@ -33,3 +33,45 @@ export interface FacebookMetrics {
   hasData: boolean;
   error?: string;
 }
+
+export interface AdPerformanceInsights {
+  impressions: number;
+  ctr: number;
+  engagement_rate_ranking?: string;
+}
+
+export interface AdPerformanceData {
+  id: string;
+  name: string;
+  created_time: string;
+  insights?: {
+    data: AdPerformanceInsights[];
+  };
+}
+
+export interface FacebookAdsResponse {
+  data: AdPerformanceData[];
+  paging?: {
+    cursors?: {
+      before: string;
+      after: string;
+    };
+    next?: string;
+  };
+}
+
+export interface AnalyzedAd extends AdPerformanceData {
+  performanceScore: number;
+  impressionsVsAverage: 'above' | 'below' | 'average';
+  ctrVsAverage: 'above' | 'below' | 'average';
+  engagementRanking: 'above' | 'below' | 'average' | 'unknown';
+  reasons: string[]; // reasons why it's good/bad
+}
+
+export interface PerformanceAnalysis {
+  bestPerformingAds: AnalyzedAd[];
+  worstPerformingAds: AnalyzedAd[];
+  averageImpressions: number;
+  averageCTR: number;
+  totalAdsAnalyzed: number;
+}
