@@ -30,6 +30,10 @@ const data = {
           title: 'Dashboard',
           url: '/dashboard',
         },
+        {
+          title: 'Dashboard',
+          url: '/dashboard',
+        },
       ],
     },
     {
