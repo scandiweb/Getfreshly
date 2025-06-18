@@ -166,7 +166,6 @@ exports.Prisma.AdPerformanceSnapshotScalarFieldEnum = {
   activeCampaigns: 'activeCampaigns',
   activeAdSets: 'activeAdSets',
   activeAds: 'activeAds',
-  totalAds: 'totalAds',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };

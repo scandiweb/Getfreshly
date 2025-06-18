@@ -70,7 +70,6 @@ model AdPerformanceSnapshot {
   activeCampaigns     Int                 @default(0)
   activeAdSets        Int                 @default(0)
   activeAds           Int                 @default(0)
-  totalAds            Int                 @default(0)
   ads                 AdPerformanceData[]
   createdAt           DateTime            @default(now())
   updatedAt           DateTime            @updatedAt

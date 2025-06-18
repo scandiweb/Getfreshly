@@ -3,8 +3,9 @@
 import { useState, useMemo } from 'react';
 import { Button } from '@repo/ui/components/button';
 import { Card, CardContent } from '@repo/ui/components/card';
-import { Settings, RefreshCw } from 'lucide-react';
+import { Settings } from 'lucide-react';
 import MetricCustomizationDialog from './MetricCustomizationDialog';
+import RefreshButton from './RefreshButton';
 import { FacebookMetrics } from '@/types/facebook';
 
 export interface Metric {
@@ -200,19 +201,9 @@ export default function PerformanceDashboard({
         </div>
       )}
 
-      {/* Header with Customize Button */}
+      {/* Header with Refresh and Customize Buttons */}
       <div className="flex justify-end gap-2">
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => {
-            /* TODO: Add refresh functionality */
-          }}
-          className="gap-2"
-        >
-          <RefreshCw className="h-4 w-4" />
-          Refresh
-        </Button>
+        <RefreshButton />
         <Button
           variant="outline"
           size="sm"

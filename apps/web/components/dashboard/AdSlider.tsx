@@ -81,7 +81,7 @@ export default function AdSlider({
                 />
 
                 {/* Ad Information */}
-                <Card className="py-0">
+                <Card className="py-0 w-[335px] max-w-full">
                   <CardContent className="p-4 space-y-3">
                     {/* Ad ID and Score */}
                     <div className="flex items-center justify-between">

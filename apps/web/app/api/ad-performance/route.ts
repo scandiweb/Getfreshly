@@ -42,7 +42,6 @@ export async function GET(request: NextRequest) {
         activeCampaigns: snapshot.activeCampaigns,
         activeAdSets: snapshot.activeAdSets,
         activeAds: snapshot.activeAds,
-        totalAds: snapshot.totalAds,
       },
       bestPerformingAds: snapshot.ads
         .filter((ad) => ad.performanceCategory === 'best')

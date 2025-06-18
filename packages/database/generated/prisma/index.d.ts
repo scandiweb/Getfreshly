@@ -4544,7 +4544,6 @@ export namespace Prisma {
     activeCampaigns: number | null
     activeAdSets: number | null
     activeAds: number | null
-    totalAds: number | null
   }
 
   export type AdPerformanceSnapshotSumAggregateOutputType = {
@@ -4558,7 +4557,6 @@ export namespace Prisma {
     activeCampaigns: number | null
     activeAdSets: number | null
     activeAds: number | null
-    totalAds: number | null
   }
 
   export type AdPerformanceSnapshotMinAggregateOutputType = {
@@ -4575,7 +4573,6 @@ export namespace Prisma {
     activeCampaigns: number | null
     activeAdSets: number | null
     activeAds: number | null
-    totalAds: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -4594,7 +4591,6 @@ export namespace Prisma {
     activeCampaigns: number | null
     activeAdSets: number | null
     activeAds: number | null
-    totalAds: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -4613,7 +4609,6 @@ export namespace Prisma {
     activeCampaigns: number
     activeAdSets: number
     activeAds: number
-    totalAds: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -4631,7 +4626,6 @@ export namespace Prisma {
     activeCampaigns?: true
     activeAdSets?: true
     activeAds?: true
-    totalAds?: true
   }
 
   export type AdPerformanceSnapshotSumAggregateInputType = {
@@ -4645,7 +4639,6 @@ export namespace Prisma {
     activeCampaigns?: true
     activeAdSets?: true
     activeAds?: true
-    totalAds?: true
   }
 
   export type AdPerformanceSnapshotMinAggregateInputType = {
@@ -4662,7 +4655,6 @@ export namespace Prisma {
     activeCampaigns?: true
     activeAdSets?: true
     activeAds?: true
-    totalAds?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -4681,7 +4673,6 @@ export namespace Prisma {
     activeCampaigns?: true
     activeAdSets?: true
     activeAds?: true
-    totalAds?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -4700,7 +4691,6 @@ export namespace Prisma {
     activeCampaigns?: true
     activeAdSets?: true
     activeAds?: true
-    totalAds?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -4806,7 +4796,6 @@ export namespace Prisma {
     activeCampaigns: number
     activeAdSets: number
     activeAds: number
-    totalAds: number
     createdAt: Date
     updatedAt: Date
     _count: AdPerformanceSnapshotCountAggregateOutputType | null
@@ -4844,7 +4833,6 @@ export namespace Prisma {
     activeCampaigns?: boolean
     activeAdSets?: boolean
     activeAds?: boolean
-    totalAds?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     ads?: boolean | AdPerformanceSnapshot$adsArgs<ExtArgs>
@@ -4865,7 +4853,6 @@ export namespace Prisma {
     activeCampaigns?: boolean
     activeAdSets?: boolean
     activeAds?: boolean
-    totalAds?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["adPerformanceSnapshot"]>
@@ -4884,7 +4871,6 @@ export namespace Prisma {
     activeCampaigns?: boolean
     activeAdSets?: boolean
     activeAds?: boolean
-    totalAds?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["adPerformanceSnapshot"]>
@@ -4903,12 +4889,11 @@ export namespace Prisma {
     activeCampaigns?: boolean
     activeAdSets?: boolean
     activeAds?: boolean
-    totalAds?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type AdPerformanceSnapshotOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "facebookAdAccountId" | "totalAdsAnalyzed" | "averageImpressions" | "averageCTR" | "totalSpend" | "totalImpressions" | "totalClicks" | "overallCTR" | "activeCampaigns" | "activeAdSets" | "activeAds" | "totalAds" | "createdAt" | "updatedAt", ExtArgs["result"]["adPerformanceSnapshot"]>
+  export type AdPerformanceSnapshotOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "facebookAdAccountId" | "totalAdsAnalyzed" | "averageImpressions" | "averageCTR" | "totalSpend" | "totalImpressions" | "totalClicks" | "overallCTR" | "activeCampaigns" | "activeAdSets" | "activeAds" | "createdAt" | "updatedAt", ExtArgs["result"]["adPerformanceSnapshot"]>
   export type AdPerformanceSnapshotInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     ads?: boolean | AdPerformanceSnapshot$adsArgs<ExtArgs>
     _count?: boolean | AdPerformanceSnapshotCountOutputTypeDefaultArgs<ExtArgs>
@@ -4935,7 +4920,6 @@ export namespace Prisma {
       activeCampaigns: number
       activeAdSets: number
       activeAds: number
-      totalAds: number
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["adPerformanceSnapshot"]>
@@ -5375,7 +5359,6 @@ export namespace Prisma {
     readonly activeCampaigns: FieldRef<"AdPerformanceSnapshot", 'Int'>
     readonly activeAdSets: FieldRef<"AdPerformanceSnapshot", 'Int'>
     readonly activeAds: FieldRef<"AdPerformanceSnapshot", 'Int'>
-    readonly totalAds: FieldRef<"AdPerformanceSnapshot", 'Int'>
     readonly createdAt: FieldRef<"AdPerformanceSnapshot", 'DateTime'>
     readonly updatedAt: FieldRef<"AdPerformanceSnapshot", 'DateTime'>
   }
@@ -7129,7 +7112,6 @@ export namespace Prisma {
     activeCampaigns: 'activeCampaigns',
     activeAdSets: 'activeAdSets',
     activeAds: 'activeAds',
-    totalAds: 'totalAds',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -7475,7 +7457,6 @@ export namespace Prisma {
     activeCampaigns?: IntFilter<"AdPerformanceSnapshot"> | number
     activeAdSets?: IntFilter<"AdPerformanceSnapshot"> | number
     activeAds?: IntFilter<"AdPerformanceSnapshot"> | number
-    totalAds?: IntFilter<"AdPerformanceSnapshot"> | number
     createdAt?: DateTimeFilter<"AdPerformanceSnapshot"> | Date | string
     updatedAt?: DateTimeFilter<"AdPerformanceSnapshot"> | Date | string
     ads?: AdPerformanceDataListRelationFilter
@@ -7495,7 +7476,6 @@ export namespace Prisma {
     activeCampaigns?: SortOrder
     activeAdSets?: SortOrder
     activeAds?: SortOrder
-    totalAds?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     ads?: AdPerformanceDataOrderByRelationAggregateInput
@@ -7518,7 +7498,6 @@ export namespace Prisma {
     activeCampaigns?: IntFilter<"AdPerformanceSnapshot"> | number
     activeAdSets?: IntFilter<"AdPerformanceSnapshot"> | number
     activeAds?: IntFilter<"AdPerformanceSnapshot"> | number
-    totalAds?: IntFilter<"AdPerformanceSnapshot"> | number
     createdAt?: DateTimeFilter<"AdPerformanceSnapshot"> | Date | string
     updatedAt?: DateTimeFilter<"AdPerformanceSnapshot"> | Date | string
     ads?: AdPerformanceDataListRelationFilter
@@ -7538,7 +7517,6 @@ export namespace Prisma {
     activeCampaigns?: SortOrder
     activeAdSets?: SortOrder
     activeAds?: SortOrder
-    totalAds?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: AdPerformanceSnapshotCountOrderByAggregateInput
@@ -7565,7 +7543,6 @@ export namespace Prisma {
     activeCampaigns?: IntWithAggregatesFilter<"AdPerformanceSnapshot"> | number
     activeAdSets?: IntWithAggregatesFilter<"AdPerformanceSnapshot"> | number
     activeAds?: IntWithAggregatesFilter<"AdPerformanceSnapshot"> | number
-    totalAds?: IntWithAggregatesFilter<"AdPerformanceSnapshot"> | number
     createdAt?: DateTimeWithAggregatesFilter<"AdPerformanceSnapshot"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"AdPerformanceSnapshot"> | Date | string
   }
@@ -7928,7 +7905,6 @@ export namespace Prisma {
     activeCampaigns?: number
     activeAdSets?: number
     activeAds?: number
-    totalAds?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     ads?: AdPerformanceDataCreateNestedManyWithoutSnapshotInput
@@ -7948,7 +7924,6 @@ export namespace Prisma {
     activeCampaigns?: number
     activeAdSets?: number
     activeAds?: number
-    totalAds?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     ads?: AdPerformanceDataUncheckedCreateNestedManyWithoutSnapshotInput
@@ -7968,7 +7943,6 @@ export namespace Prisma {
     activeCampaigns?: IntFieldUpdateOperationsInput | number
     activeAdSets?: IntFieldUpdateOperationsInput | number
     activeAds?: IntFieldUpdateOperationsInput | number
-    totalAds?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ads?: AdPerformanceDataUpdateManyWithoutSnapshotNestedInput
@@ -7988,7 +7962,6 @@ export namespace Prisma {
     activeCampaigns?: IntFieldUpdateOperationsInput | number
     activeAdSets?: IntFieldUpdateOperationsInput | number
     activeAds?: IntFieldUpdateOperationsInput | number
-    totalAds?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ads?: AdPerformanceDataUncheckedUpdateManyWithoutSnapshotNestedInput
@@ -8008,7 +7981,6 @@ export namespace Prisma {
     activeCampaigns?: number
     activeAdSets?: number
     activeAds?: number
-    totalAds?: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -8027,7 +7999,6 @@ export namespace Prisma {
     activeCampaigns?: IntFieldUpdateOperationsInput | number
     activeAdSets?: IntFieldUpdateOperationsInput | number
     activeAds?: IntFieldUpdateOperationsInput | number
-    totalAds?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -8046,7 +8017,6 @@ export namespace Prisma {
     activeCampaigns?: IntFieldUpdateOperationsInput | number
     activeAdSets?: IntFieldUpdateOperationsInput | number
     activeAds?: IntFieldUpdateOperationsInput | number
-    totalAds?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -8423,7 +8393,6 @@ export namespace Prisma {
     activeCampaigns?: SortOrder
     activeAdSets?: SortOrder
     activeAds?: SortOrder
-    totalAds?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -8439,7 +8408,6 @@ export namespace Prisma {
     activeCampaigns?: SortOrder
     activeAdSets?: SortOrder
     activeAds?: SortOrder
-    totalAds?: SortOrder
   }
 
   export type AdPerformanceSnapshotMaxOrderByAggregateInput = {
@@ -8456,7 +8424,6 @@ export namespace Prisma {
     activeCampaigns?: SortOrder
     activeAdSets?: SortOrder
     activeAds?: SortOrder
-    totalAds?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -8475,7 +8442,6 @@ export namespace Prisma {
     activeCampaigns?: SortOrder
     activeAdSets?: SortOrder
     activeAds?: SortOrder
-    totalAds?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -8491,7 +8457,6 @@ export namespace Prisma {
     activeCampaigns?: SortOrder
     activeAdSets?: SortOrder
     activeAds?: SortOrder
-    totalAds?: SortOrder
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
@@ -9187,7 +9152,6 @@ export namespace Prisma {
     activeCampaigns?: number
     activeAdSets?: number
     activeAds?: number
-    totalAds?: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -9206,7 +9170,6 @@ export namespace Prisma {
     activeCampaigns?: number
     activeAdSets?: number
     activeAds?: number
-    totalAds?: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -9241,7 +9204,6 @@ export namespace Prisma {
     activeCampaigns?: IntFieldUpdateOperationsInput | number
     activeAdSets?: IntFieldUpdateOperationsInput | number
     activeAds?: IntFieldUpdateOperationsInput | number
-    totalAds?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -9260,7 +9222,6 @@ export namespace Prisma {
     activeCampaigns?: IntFieldUpdateOperationsInput | number
     activeAdSets?: IntFieldUpdateOperationsInput | number
     activeAds?: IntFieldUpdateOperationsInput | number
-    totalAds?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

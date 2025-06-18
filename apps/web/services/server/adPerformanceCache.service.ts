@@ -353,4 +353,45 @@ export class AdPerformanceCacheService {
     console.log(`Cleaned up ${deleted.count} old ad performance snapshots`);
     return deleted.count;
   }
+
+  /**
+   * Clear cached data for a specific user and account
+   */
+  static async clearCacheForAccount(
+    userId: string,
+    facebookAdAccountId: string,
+  ) {
+    const deleted = await prisma.adPerformanceSnapshot.deleteMany({
+      where: {
+        userId,
+        facebookAdAccountId,
+      },
+    });
+
+    console.log(
+      `Cleared ${deleted.count} cached snapshots for user ${userId} and account ${facebookAdAccountId}`,
+    );
+    return deleted.count;
+  }
+
+  /**
+   * Force refresh by clearing cache and fetching fresh data
+   */
+  static async forceRefresh(
+    userId: string,
+    accessToken: string,
+    facebookAdAccountId: string,
+    limit: number = 50,
+  ): Promise<CachedAdPerformanceResult> {
+    // Clear existing cache
+    await this.clearCacheForAccount(userId, facebookAdAccountId);
+
+    // Fetch fresh data (this will automatically cache it)
+    return this.getAdPerformanceData(
+      userId,
+      accessToken,
+      facebookAdAccountId,
+      limit,
+    );
+  }
 }
