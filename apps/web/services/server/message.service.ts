@@ -11,10 +11,12 @@ export class MessageService {
 
   static async getUserChatHistory(
     userId: string,
+    chatType: string = 'general',
   ): Promise<ChatCompletionMessageParam[]> {
     const messages = await prisma.message.findMany({
       where: {
         userId,
+        chatType,
         content: { not: '' },
       },
       orderBy: { createdAt: 'asc' },
@@ -27,9 +29,20 @@ export class MessageService {
     return messages as ChatCompletionMessageParam[];
   }
 
-  static async getUserMessages(userId: string) {
+  static async getDashboardChatHistory(
+    userId: string,
+  ): Promise<ChatCompletionMessageParam[]> {
+    return this.getUserChatHistory(userId, 'dashboard');
+  }
+
+  static async getUserMessages(userId: string, chatType?: string) {
+    const whereClause: any = { userId };
+    if (chatType) {
+      whereClause.chatType = chatType;
+    }
+
     return await prisma.message.findMany({
-      where: { userId },
+      where: whereClause,
       orderBy: { createdAt: 'asc' },
     });
   }
@@ -47,12 +60,21 @@ export class MessageService {
   static async storeMessages(
     userId: string,
     messages: ChatCompletionMessageParam[],
+    chatType: string = 'general',
   ) {
     for (const message of messages) {
       await this.createMessage({
         ...message,
         userId,
+        chatType,
       } as CreateMessageData);
     }
+  }
+
+  static async storeDashboardMessages(
+    userId: string,
+    messages: ChatCompletionMessageParam[],
+  ) {
+    return this.storeMessages(userId, messages, 'dashboard');
   }
 }

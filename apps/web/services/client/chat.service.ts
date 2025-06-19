@@ -12,6 +12,17 @@ export class ChatService {
     return data;
   }
 
+  static async fetchDashboardMessages(): Promise<{ messages: Message[] }> {
+    const response = await fetch('/api/dashboard/chat');
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error || 'Failed to fetch dashboard messages');
+    }
+
+    return data;
+  }
+
   static async sendMessage(
     content: string,
     onChunk: (chunk: string) => void,
@@ -39,6 +50,43 @@ export class ChatService {
 
     if (!response.ok) {
       throw new Error('Failed to send message');
+    }
+
+    await this.processStreamingResponse(response, onChunk);
+  }
+
+  static async sendDashboardMessage(
+    content: string,
+    onChunk: (chunk: string) => void,
+    selectedAccount?: SelectedAccount | null,
+    dashboardContext?: any,
+  ): Promise<void> {
+    const requestBody: {
+      message: string;
+      adAccountId?: string;
+      accessToken?: string;
+      dashboardContext?: any;
+    } = {
+      message: content,
+      dashboardContext,
+    };
+
+    // Include selected account data if available
+    if (selectedAccount) {
+      requestBody.adAccountId = selectedAccount.accountId;
+      requestBody.accessToken = selectedAccount.accessToken;
+    }
+
+    const response = await fetch('/api/dashboard/chat', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(requestBody),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to send dashboard message');
     }
 
     await this.processStreamingResponse(response, onChunk);

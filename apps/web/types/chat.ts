@@ -50,5 +50,6 @@ export interface CreateMessageData {
   content: string;
   userId: string;
   role: 'user' | 'assistant';
+  chatType?: string;
   isLoading?: boolean;
 }

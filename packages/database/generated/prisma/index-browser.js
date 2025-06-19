@@ -125,6 +125,7 @@ exports.Prisma.MessageScalarFieldEnum = {
   content: 'content',
   userId: 'userId',
   role: 'role',
+  chatType: 'chatType',
   isLoading: 'isLoading',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'

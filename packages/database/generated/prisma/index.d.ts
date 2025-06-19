@@ -1309,6 +1309,7 @@ export namespace Prisma {
     content: string | null
     userId: string | null
     role: string | null
+    chatType: string | null
     isLoading: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -1319,6 +1320,7 @@ export namespace Prisma {
     content: string | null
     userId: string | null
     role: string | null
+    chatType: string | null
     isLoading: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -1329,6 +1331,7 @@ export namespace Prisma {
     content: number
     userId: number
     role: number
+    chatType: number
     isLoading: number
     createdAt: number
     updatedAt: number
@@ -1341,6 +1344,7 @@ export namespace Prisma {
     content?: true
     userId?: true
     role?: true
+    chatType?: true
     isLoading?: true
     createdAt?: true
     updatedAt?: true
@@ -1351,6 +1355,7 @@ export namespace Prisma {
     content?: true
     userId?: true
     role?: true
+    chatType?: true
     isLoading?: true
     createdAt?: true
     updatedAt?: true
@@ -1361,6 +1366,7 @@ export namespace Prisma {
     content?: true
     userId?: true
     role?: true
+    chatType?: true
     isLoading?: true
     createdAt?: true
     updatedAt?: true
@@ -1444,6 +1450,7 @@ export namespace Prisma {
     content: string
     userId: string
     role: string
+    chatType: string
     isLoading: boolean
     createdAt: Date
     updatedAt: Date
@@ -1471,6 +1478,7 @@ export namespace Prisma {
     content?: boolean
     userId?: boolean
     role?: boolean
+    chatType?: boolean
     isLoading?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -1481,6 +1489,7 @@ export namespace Prisma {
     content?: boolean
     userId?: boolean
     role?: boolean
+    chatType?: boolean
     isLoading?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -1491,6 +1500,7 @@ export namespace Prisma {
     content?: boolean
     userId?: boolean
     role?: boolean
+    chatType?: boolean
     isLoading?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -1501,12 +1511,13 @@ export namespace Prisma {
     content?: boolean
     userId?: boolean
     role?: boolean
+    chatType?: boolean
     isLoading?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type MessageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "content" | "userId" | "role" | "isLoading" | "createdAt" | "updatedAt", ExtArgs["result"]["message"]>
+  export type MessageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "content" | "userId" | "role" | "chatType" | "isLoading" | "createdAt" | "updatedAt", ExtArgs["result"]["message"]>
 
   export type $MessagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Message"
@@ -1516,6 +1527,7 @@ export namespace Prisma {
       content: string
       userId: string
       role: string
+      chatType: string
       isLoading: boolean
       createdAt: Date
       updatedAt: Date
@@ -1946,6 +1958,7 @@ export namespace Prisma {
     readonly content: FieldRef<"Message", 'String'>
     readonly userId: FieldRef<"Message", 'String'>
     readonly role: FieldRef<"Message", 'String'>
+    readonly chatType: FieldRef<"Message", 'String'>
     readonly isLoading: FieldRef<"Message", 'Boolean'>
     readonly createdAt: FieldRef<"Message", 'DateTime'>
     readonly updatedAt: FieldRef<"Message", 'DateTime'>
@@ -7062,6 +7075,7 @@ export namespace Prisma {
     content: 'content',
     userId: 'userId',
     role: 'role',
+    chatType: 'chatType',
     isLoading: 'isLoading',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -7245,6 +7259,7 @@ export namespace Prisma {
     content?: StringFilter<"Message"> | string
     userId?: StringFilter<"Message"> | string
     role?: StringFilter<"Message"> | string
+    chatType?: StringFilter<"Message"> | string
     isLoading?: BoolFilter<"Message"> | boolean
     createdAt?: DateTimeFilter<"Message"> | Date | string
     updatedAt?: DateTimeFilter<"Message"> | Date | string
@@ -7255,6 +7270,7 @@ export namespace Prisma {
     content?: SortOrder
     userId?: SortOrder
     role?: SortOrder
+    chatType?: SortOrder
     isLoading?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -7268,6 +7284,7 @@ export namespace Prisma {
     content?: StringFilter<"Message"> | string
     userId?: StringFilter<"Message"> | string
     role?: StringFilter<"Message"> | string
+    chatType?: StringFilter<"Message"> | string
     isLoading?: BoolFilter<"Message"> | boolean
     createdAt?: DateTimeFilter<"Message"> | Date | string
     updatedAt?: DateTimeFilter<"Message"> | Date | string
@@ -7278,6 +7295,7 @@ export namespace Prisma {
     content?: SortOrder
     userId?: SortOrder
     role?: SortOrder
+    chatType?: SortOrder
     isLoading?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -7294,6 +7312,7 @@ export namespace Prisma {
     content?: StringWithAggregatesFilter<"Message"> | string
     userId?: StringWithAggregatesFilter<"Message"> | string
     role?: StringWithAggregatesFilter<"Message"> | string
+    chatType?: StringWithAggregatesFilter<"Message"> | string
     isLoading?: BoolWithAggregatesFilter<"Message"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"Message"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Message"> | Date | string
@@ -7669,6 +7688,7 @@ export namespace Prisma {
     content: string
     userId: string
     role?: string
+    chatType?: string
     isLoading?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -7679,6 +7699,7 @@ export namespace Prisma {
     content: string
     userId: string
     role?: string
+    chatType?: string
     isLoading?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -7689,6 +7710,7 @@ export namespace Prisma {
     content?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
+    chatType?: StringFieldUpdateOperationsInput | string
     isLoading?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7699,6 +7721,7 @@ export namespace Prisma {
     content?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
+    chatType?: StringFieldUpdateOperationsInput | string
     isLoading?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7709,6 +7732,7 @@ export namespace Prisma {
     content: string
     userId: string
     role?: string
+    chatType?: string
     isLoading?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -7719,6 +7743,7 @@ export namespace Prisma {
     content?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
+    chatType?: StringFieldUpdateOperationsInput | string
     isLoading?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7729,6 +7754,7 @@ export namespace Prisma {
     content?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
+    chatType?: StringFieldUpdateOperationsInput | string
     isLoading?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -8196,6 +8222,7 @@ export namespace Prisma {
     content?: SortOrder
     userId?: SortOrder
     role?: SortOrder
+    chatType?: SortOrder
     isLoading?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -8206,6 +8233,7 @@ export namespace Prisma {
     content?: SortOrder
     userId?: SortOrder
     role?: SortOrder
+    chatType?: SortOrder
     isLoading?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -8216,6 +8244,7 @@ export namespace Prisma {
     content?: SortOrder
     userId?: SortOrder
     role?: SortOrder
+    chatType?: SortOrder
     isLoading?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder

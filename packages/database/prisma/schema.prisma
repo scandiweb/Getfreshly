@@ -19,11 +19,13 @@ model Message {
   content   String
   userId    String
   role      String   @default("user")
+  chatType  String   @default("general") // "general" or "dashboard"
   isLoading Boolean  @default(false)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   @@index([userId])
+  @@index([userId, chatType])
 }
 
 model LinkedAccount {

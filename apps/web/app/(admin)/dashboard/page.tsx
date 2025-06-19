@@ -3,10 +3,13 @@ import { Breadcrumb } from '@/types/breadcrumbs';
 import { UserService } from '@/services/user.service';
 import { FacebookService } from '@/services/server/facebook.service';
 import PerformanceDashboard from '@/components/dashboard/PerformanceDashboard';
+import DashboardChat from '@/components/dashboard/DashboardChat';
 import { cookies } from 'next/headers';
 import { SelectedAccount } from '@/types/chat';
 import AdSlider from '@/components/dashboard/AdSlider';
 import { AdPerformanceCacheService } from '@/services/server/adPerformanceCache.service';
+import { prisma } from '@repo/database';
+import { LinkedAccount } from '@/types/linkedAccounts';
 
 // Cache this page for 1 hour (3600 seconds)
 export const revalidate = 3600;
@@ -20,6 +23,29 @@ const breadCrumbs: Breadcrumb[] = [
 
 export default async function Page() {
   const userId = await UserService.requireAuth();
+
+  // Get user data for chat
+  const user = await UserService.getCurrentUser();
+  if (!user) {
+    throw new Error('User not found');
+  }
+
+  // Get linked accounts for chat
+  const linkedAccounts = (await prisma.linkedAccount.findMany({
+    where: {
+      userId: user.id,
+    },
+    select: {
+      accountName: true,
+      accessToken: true,
+      adAccounts: {
+        select: {
+          accountId: true,
+          accountName: true,
+        },
+      },
+    },
+  })) as LinkedAccount[];
 
   // Get selected account from cookie
   const cookieStore = await cookies();
@@ -165,6 +191,15 @@ export default async function Page() {
           title="Lowest performing ads"
         />
       )}
+
+      {/* Dashboard Chat Assistant */}
+      <DashboardChat
+        currentUser={user}
+        linkedAccounts={linkedAccounts}
+        metaMetrics={metaMetrics}
+        bestPerformingAds={bestPerformingAdPreviews}
+        worstPerformingAds={worstPerformingAdPreviews}
+      />
     </div>
   );
 }

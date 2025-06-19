@@ -4,7 +4,7 @@ import { MessagesListProps } from '@/types/chat';
 
 export function MessagesList({ messages, currentUser }: MessagesListProps) {
   return (
-    <div className="p-4 pb-24 flex flex-col gap-4 max-h-full overflow-y-scroll">
+    <div className="p-4 flex flex-col gap-4 h-full overflow-y-auto">
       {messages.map((message) => (
         <ChatBubble
           key={message.id}
