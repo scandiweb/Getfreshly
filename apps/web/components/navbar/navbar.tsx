@@ -28,6 +28,7 @@ import Link from 'next/link';
 import Logo from '@/assets/logo.png';
 import { ThemeToggle } from '@/components/themeToggle';
 import { UserIcon } from '@/components/userIcon';
+import { SettingsDropdown } from '@/components/settings';
 
 interface MenuItem {
   title: string;
@@ -149,6 +150,7 @@ export function Navbar() {
           <div className="flex flex-row items-center gap-4">
             <ThemeToggle />
             <UserIcon />
+            <SettingsDropdown />
           </div>
         </nav>
 
@@ -165,29 +167,32 @@ export function Navbar() {
                 alt={logo.alt}
               />
             </Link>
-            <Sheet>
-              <SheetTrigger asChild>
-                <Button variant="outline" size="icon">
-                  <Menu className="size-4" />
-                </Button>
-              </SheetTrigger>
-              <SheetContent className="overflow-y-auto">
-                <SheetHeader>
-                  <SheetTitle />
-                </SheetHeader>
-                <div className="flex flex-col gap-6 p-4">
-                  <Accordion
-                    type="single"
-                    collapsible
-                    className="flex w-full flex-col gap-4"
-                  >
-                    {menu.map((item) => renderMobileMenuItem(item))}
-                  </Accordion>
+            <div className="flex items-center gap-2">
+              <SettingsDropdown />
+              <Sheet>
+                <SheetTrigger asChild>
+                  <Button variant="outline" size="icon">
+                    <Menu className="size-4" />
+                  </Button>
+                </SheetTrigger>
+                <SheetContent className="overflow-y-auto">
+                  <SheetHeader>
+                    <SheetTitle />
+                  </SheetHeader>
+                  <div className="flex flex-col gap-6 p-4">
+                    <Accordion
+                      type="single"
+                      collapsible
+                      className="flex w-full flex-col gap-4"
+                    >
+                      {menu.map((item) => renderMobileMenuItem(item))}
+                    </Accordion>
 
-                  <div className="flex flex-col gap-3" />
-                </div>
-              </SheetContent>
-            </Sheet>
+                    <div className="flex flex-col gap-3" />
+                  </div>
+                </SheetContent>
+              </Sheet>
+            </div>
           </div>
         </div>
       </div>

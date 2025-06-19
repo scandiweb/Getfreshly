@@ -32,7 +32,11 @@ export class ChatService {
   ): Promise<void> {
     try {
       let fullResponse = '';
-      const openAIChatService = new OpenAIChatService(accessToken, adAccountId);
+      const openAIChatService = new OpenAIChatService(
+        accessToken,
+        adAccountId,
+        userId,
+      );
 
       for await (const chunk of openAIChatService.streamChat(messages)) {
         fullResponse += chunk;

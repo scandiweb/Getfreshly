@@ -34,6 +34,11 @@ const data = {
       url: '#',
       items: [
         {
+          title: 'General Settings',
+          url: '/settings',
+          isActive: false,
+        },
+        {
           title: 'Linked Accounts',
           url: '/settings/linked-accounts',
           isActive: false,

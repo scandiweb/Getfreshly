@@ -5,13 +5,15 @@ import {
 } from 'openai/resources/chat/completions.mjs';
 import { facebookToolDefinition } from './facebook-tools.definition';
 import { facebookToolsExecution } from './facebook-tools.execution';
+import { ServerPromptService } from '../prompt.service';
 
 export class OpenAIChatService {
   private client: OpenAI;
   private tools: Record<string, (args: any) => any>;
   private instructions: string = '';
+  private prePrompt: string = '';
 
-  constructor(accessToken?: string, adAccountId?: string) {
+  constructor(accessToken?: string, adAccountId?: string, userId?: string) {
     const apiKey = process.env.OPENAI_API_KEY;
 
     if (!apiKey) {
@@ -22,19 +24,59 @@ export class OpenAIChatService {
 
     this.client = new OpenAI({ apiKey, timeout: 30000, maxRetries: 2 });
     this.tools = facebookToolsExecution(accessToken);
-    this.instructions = `You're a marketer expert. Help user perform the best marketing actions, you'll provide a very specific plan for the user based on information you'll get through tools. Use the following act_id as ad account id: ${adAccountId} if user didn't provide another one in the message. If you got an error that access token is not provided ask user to make sure they selected an account or try to re-link them`;
+    this.instructions = `Use the following act_id as ad account id: ${adAccountId} if user didn't provide another one in the message. If you got an error that access token is not provided ask user to make sure they selected an account or try to re-link them. make sure you use this date and time for the whole conversation ${new Date().toLocaleString(
+      'en-US',
+      {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        timeZoneName: 'short',
+      },
+    )} and make it as your default date and time`;
+
+    // Initialize pre-prompt if userId is provided
+    if (userId) {
+      this.initializePrePrompt(userId);
+    }
+  }
+
+  private async initializePrePrompt(userId: string): Promise<void> {
+    try {
+      const prompt = await ServerPromptService.getUserPrompt(userId);
+
+      if (prompt) {
+        this.prePrompt = prompt.content;
+        console.log(
+          `Loaded pre-prompt for user ${userId}: ${prompt.content.substring(0, 100)}...`,
+        );
+      } else {
+        console.log(`No pre-prompt found for user ${userId}`);
+      }
+    } catch (error) {
+      console.error('Error fetching user pre-prompt:', error);
+      // Continue without pre-prompt if there's an error
+    }
   }
 
   async *streamChat(
     messages: ChatCompletionMessageParam[],
   ): AsyncGenerator<string, void, unknown> {
     try {
+      console.log('prePrompt', this.prePrompt);
+
+      // Combine instructions with pre-prompt if it exists
+      const combinedInstructions = this.prePrompt
+        ? `${this.instructions}\n\n${this.prePrompt}`
+        : this.instructions;
+
       const stream = await this.client.chat.completions.create({
         model: 'gpt-4o-mini',
         messages: [
           {
-            role: 'developer',
-            content: this.instructions,
+            role: 'system',
+            content: combinedInstructions,
           },
           ...messages,
         ],
