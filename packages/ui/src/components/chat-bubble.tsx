@@ -12,7 +12,7 @@ const chatBubbleVariants = cva('rounded-lg p-4 max-w-[80%] text-sm', {
     variant: {
       user: 'bg-primary text-primary-foreground ml-auto',
       assistant:
-        'bg-muted text-muted-foreground mr-auto prose prose-invert dark:prose-invert max-w-none',
+        'bg-muted text-muted-foreground mr-auto prose prose-invert dark:prose-invert max-w-none break-words overflow-hidden',
     },
   },
   defaultVariants: {
@@ -31,16 +31,23 @@ interface ChatBubbleProps
 
 const markdownComponents: Components = {
   pre: ({ children }) => (
-    <pre className="overflow-auto rounded-lg bg-black/10 p-2">{children}</pre>
+    <pre className="hidden overflow-x-auto rounded-lg bg-black/10 p-2 break-words whitespace-pre-wrap">
+      {children}
+    </pre>
   ),
   code: ({ children, className }) => {
     const isInline = !className;
     return isInline ? (
-      <code className="rounded bg-black/10 px-1 py-0.5">{children}</code>
+      <code className="rounded bg-black/10 px-1 py-0.5 break-words">
+        {children}
+      </code>
     ) : (
-      <code className={className}>{children}</code>
+      <code className={cn(className, 'break-words')}>{children}</code>
     );
   },
+  p: ({ children }) => (
+    <p className="break-words overflow-hidden">{children}</p>
+  ),
 };
 
 export function ChatBubble({
@@ -70,7 +77,7 @@ export function ChatBubble({
         )}
         {...props}
       >
-        <div className="whitespace-pre-wrap">
+        <div className="whitespace-pre-wrap break-words overflow-hidden">
           {variant === 'user' ? (
             message.split('\n').map((line, i) => (
               <React.Fragment key={i}>
@@ -79,7 +86,7 @@ export function ChatBubble({
               </React.Fragment>
             ))
           ) : (
-            <div className="[&_*:first-child]:mt-0 [&_*:last-child]:mb-0 leading-normal">
+            <div className="[&_*:first-child]:mt-0 [&_*:last-child]:mb-0 leading-normal break-words overflow-hidden">
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 components={markdownComponents}

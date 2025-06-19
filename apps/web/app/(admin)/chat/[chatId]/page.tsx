@@ -5,7 +5,6 @@ import { UserService } from '@/services/user.service';
 import { redirect } from 'next/navigation';
 import { prisma } from '@repo/database';
 import { LinkedAccount } from '@/types/linkedAccounts';
-import { ChatDrawer } from '@/components/chat/ChatDrawer';
 
 interface PageProps {
   params: Promise<{
@@ -31,23 +30,8 @@ export default async function Page({
     },
     select: {
       title: true,
-      messages: {
-        select: {
-          content: true,
-          role: true,
-        },
-        orderBy: {
-          createdAt: 'asc',
-        },
-      },
     },
   });
-
-  const messages =
-    chat?.messages.map((msg) => ({
-      content: msg.content,
-      role: msg.role as 'user' | 'assistant',
-    })) || [];
 
   const breadCrumbs: Breadcrumb[] = [
     {
@@ -79,12 +63,7 @@ export default async function Page({
   return (
     <div className="pb-6 h-[calc(100vh-161px)] relative">
       <BreadcrumbsConsumer breadcrumbs={breadCrumbs} />
-      <div className="flex h-full">
-        <div className="flex-1">
-          <ChatContainer currentUser={user} linkedAccounts={linkedAccounts} />
-        </div>
-        <ChatDrawer messages={messages} chatId={resolvedParams.chatId} />
-      </div>
+      <ChatContainer currentUser={user} linkedAccounts={linkedAccounts} />
     </div>
   );
 }

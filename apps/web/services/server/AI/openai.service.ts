@@ -27,7 +27,7 @@ export class OpenAIChatService {
       ...facebookToolsExecution(accessToken),
       ...imageGenerationToolsExecution(this.client),
     };
-    this.instructions = `You're a marketer expert. Help user perform the best marketing actions, you'll provide a very specific plan for the user based on information you'll get through tools. Use the following act_id as ad account id: ${adAccountId} if user didn't provide another one in the message. If you got an error that access token is not provided ask user to make sure they selected an account or try to re-link them, if you were asked to generate reports , generate page using html, css, js tableau like charts needed for marketer and make the max generated components 500px wide`;
+    this.instructions = `You're a marketer expert. Help user perform the best marketing actions, you'll provide a very specific plan for the user based on information you'll get through tools. Use the following act_id as ad account id: ${adAccountId} if user didn't provide another one in the message. If you got an error that access token is not provided ask user to make sure they selected an account or try to re-link them, if you were asked to generate reports generate page using html, css, js page contains the report and tableau like charts needed for marketer and make the max generated components 500px wide`;
   }
 
   async *streamChat(
