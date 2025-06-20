@@ -1,7 +1,12 @@
 import { CodeViewProps } from '@/types/chat';
 import { CodeBlock } from './CodeBlock';
 
-export function CodeView({ html, css, js, isLoading }: CodeViewProps) {
+export function CodeView({
+  html,
+  css,
+  js,
+  isLoading,
+}: CodeViewProps) {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-full">
