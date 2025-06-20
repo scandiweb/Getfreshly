@@ -84,7 +84,6 @@ export function AppSidebar({ recentChatsContent, ...props }: AppSidebarProps) {
             </SidebarGroupContent>
           </SidebarGroup>
         ))}
-        
       </SidebarContent>
       <SidebarRail />
     </Sidebar>
