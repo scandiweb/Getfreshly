@@ -64,6 +64,7 @@ export async function RecentChats() {
     orderBy: {
       createdAt: 'desc',
     },
+    take:10,
   });
 
   if (chats.length === 0) {
