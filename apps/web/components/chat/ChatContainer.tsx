@@ -13,6 +13,7 @@ import { LinkedAccount } from '@/types/linkedAccounts';
 import { WelcomeChat } from './WelcomeChat';
 import { ChatDrawer } from './ChatDrawer';
 
+
 const STORED_MESSAGE_KEY = 'firstMessage';
 
 export default function ChatContainer({
@@ -55,7 +56,7 @@ export default function ChatContainer({
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ title: content }),
     });
-
+      
     if (!response.ok) {
       throw new Error('Failed to create chat');
     }
