@@ -54,3 +54,26 @@ export interface CreateMessageData {
   role: 'user' | 'assistant';
   isLoading?: boolean;
 }
+
+// Chat Drawer Types
+export interface ExtractedCode {
+  html: string;
+  css: string;
+  js: string;
+}
+
+export interface ChatDrawerProps {
+  chatId: string;
+  messages: Message[];
+  previewMessageIndex?: number | null;
+  previewTimestamp?: number;
+}
+
+export interface CodeViewProps extends ExtractedCode {
+  isLoading: boolean;
+}
+
+export interface CodeBlockProps {
+  code: string;
+  language: string;
+}

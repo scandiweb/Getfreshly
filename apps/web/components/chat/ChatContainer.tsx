@@ -11,8 +11,7 @@ import { CurrentUser, SelectedAccount } from '@/types/chat';
 import { ChatService } from '@/services/client/chat.service';
 import { LinkedAccount } from '@/types/linkedAccounts';
 import { WelcomeChat } from './WelcomeChat';
-import { ChatDrawer } from './ChatDrawer';
-
+import { ChatDrawer } from '@/components/chatDrawer';
 
 const STORED_MESSAGE_KEY = 'firstMessage';
 
@@ -56,7 +55,7 @@ export default function ChatContainer({
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ title: content }),
     });
-      
+
     if (!response.ok) {
       throw new Error('Failed to create chat');
     }
@@ -194,7 +193,7 @@ export default function ChatContainer({
       </div>
       {chatId && (
         <ChatDrawer
-          messages={drawerMessages}
+          messages={messages}
           chatId={chatId}
           previewMessageIndex={previewedMessageIndex}
           previewTimestamp={previewTimestamp}
