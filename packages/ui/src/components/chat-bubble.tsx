@@ -6,6 +6,7 @@ import { Loader2 } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import type { Components } from 'react-markdown';
+import { ImagePreviewDialog } from './image-preview-dialog';
 
 const chatBubbleVariants = cva('rounded-lg p-4 max-w-[80%] text-sm', {
   variants: {
@@ -27,6 +28,7 @@ interface ChatBubbleProps
   userImage?: string;
   userName?: string;
   isLoading?: boolean;
+  image?: string;
 }
 
 const markdownComponents: Components = {
@@ -48,6 +50,17 @@ const markdownComponents: Components = {
   p: ({ children }) => (
     <p className="break-words overflow-hidden">{children}</p>
   ),
+  img: ({ src, alt }) => (
+    <div className="my-2">
+      <ImagePreviewDialog src={src || ''} alt={alt || 'Image'}>
+        <img
+          src={src}
+          alt={alt || 'Image'}
+          className="max-w-[150px] max-h-[150px] rounded-lg object-cover hover:opacity-90 transition-opacity"
+        />
+      </ImagePreviewDialog>
+    </div>
+  ),
 };
 
 export function ChatBubble({
@@ -57,6 +70,7 @@ export function ChatBubble({
   userImage,
   userName,
   isLoading,
+  image,
   ...props
 }: ChatBubbleProps) {
   return (
@@ -79,12 +93,25 @@ export function ChatBubble({
       >
         <div className="whitespace-pre-wrap break-words overflow-hidden">
           {variant === 'user' ? (
-            message.split('\n').map((line, i) => (
-              <React.Fragment key={i}>
-                {line}
-                {i < message.split('\n').length - 1 && <br />}
-              </React.Fragment>
-            ))
+            <>
+              {image && (
+                <div className="mb-2">
+                  <ImagePreviewDialog src={image} alt="User uploaded image">
+                    <img
+                      src={image}
+                      alt="User uploaded image"
+                      className="max-w-[150px] max-h-[150px] rounded-lg object-cover hover:opacity-90 transition-opacity"
+                    />
+                  </ImagePreviewDialog>
+                </div>
+              )}
+              {message.split('\n').map((line, i) => (
+                <React.Fragment key={i}>
+                  {line}
+                  {i < message.split('\n').length - 1 && <br />}
+                </React.Fragment>
+              ))}
+            </>
           ) : (
             <div className="[&_*:first-child]:mt-0 [&_*:last-child]:mb-0 leading-normal break-words overflow-hidden">
               <ReactMarkdown
