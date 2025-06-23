@@ -61,7 +61,7 @@ export default async function Page({
   })) as LinkedAccount[];
 
   return (
-    <div className="pb-6 h-[calc(100vh-161px)]">
+    <div className="pb-6 h-[calc(100vh-161px)] relative">
       <BreadcrumbsConsumer breadcrumbs={breadCrumbs} />
       <ChatContainer currentUser={user} linkedAccounts={linkedAccounts} />
     </div>

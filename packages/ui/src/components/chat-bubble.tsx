@@ -6,13 +6,14 @@ import { Loader2 } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import type { Components } from 'react-markdown';
+import { ImagePreviewDialog } from './image-preview-dialog';
 
 const chatBubbleVariants = cva('rounded-lg p-4 max-w-[80%] text-sm', {
   variants: {
     variant: {
       user: 'bg-primary text-primary-foreground ml-auto',
       assistant:
-        'bg-muted text-muted-foreground mr-auto prose prose-invert dark:prose-invert max-w-none',
+        'bg-muted text-muted-foreground mr-auto prose prose-invert dark:prose-invert max-w-none break-words overflow-hidden',
     },
   },
   defaultVariants: {
@@ -27,20 +28,39 @@ interface ChatBubbleProps
   userImage?: string;
   userName?: string;
   isLoading?: boolean;
+  image?: string;
 }
 
 const markdownComponents: Components = {
   pre: ({ children }) => (
-    <pre className="overflow-auto rounded-lg bg-black/10 p-2">{children}</pre>
+    <pre className="hidden overflow-x-auto rounded-lg bg-black/10 p-2 break-words whitespace-pre-wrap">
+      {children}
+    </pre>
   ),
   code: ({ children, className }) => {
     const isInline = !className;
     return isInline ? (
-      <code className="rounded bg-black/10 px-1 py-0.5">{children}</code>
+      <code className="rounded bg-black/10 px-1 py-0.5 break-words">
+        {children}
+      </code>
     ) : (
-      <code className={className}>{children}</code>
+      <code className={cn(className, 'break-words')}>{children}</code>
     );
   },
+  p: ({ children }) => (
+    <p className="break-words overflow-hidden">{children}</p>
+  ),
+  img: ({ src, alt }) => (
+    <div className="my-2">
+      <ImagePreviewDialog src={src || ''} alt={alt || 'Image'}>
+        <img
+          src={src}
+          alt={alt || 'Image'}
+          className="max-w-[150px] max-h-[150px] rounded-lg object-cover hover:opacity-90 transition-opacity"
+        />
+      </ImagePreviewDialog>
+    </div>
+  ),
 };
 
 export function ChatBubble({
@@ -50,6 +70,7 @@ export function ChatBubble({
   userImage,
   userName,
   isLoading,
+  image,
   ...props
 }: ChatBubbleProps) {
   return (
@@ -70,16 +91,29 @@ export function ChatBubble({
         )}
         {...props}
       >
-        <div className="whitespace-pre-wrap">
+        <div className="whitespace-pre-wrap break-words overflow-hidden">
           {variant === 'user' ? (
-            message.split('\n').map((line, i) => (
-              <React.Fragment key={i}>
-                {line}
-                {i < message.split('\n').length - 1 && <br />}
-              </React.Fragment>
-            ))
+            <>
+              {image && (
+                <div className="mb-2">
+                  <ImagePreviewDialog src={image} alt="User uploaded image">
+                    <img
+                      src={image}
+                      alt="User uploaded image"
+                      className="max-w-[150px] max-h-[150px] rounded-lg object-cover hover:opacity-90 transition-opacity"
+                    />
+                  </ImagePreviewDialog>
+                </div>
+              )}
+              {message.split('\n').map((line, i) => (
+                <React.Fragment key={i}>
+                  {line}
+                  {i < message.split('\n').length - 1 && <br />}
+                </React.Fragment>
+              ))}
+            </>
           ) : (
-            <div className="[&_*:first-child]:mt-0 [&_*:last-child]:mb-0 leading-normal">
+            <div className="[&_*:first-child]:mt-0 [&_*:last-child]:mb-0 leading-normal break-words overflow-hidden">
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 components={markdownComponents}

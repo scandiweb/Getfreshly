@@ -5,6 +5,8 @@ import {
 } from 'openai/resources/chat/completions.mjs';
 import { facebookToolDefinition } from './facebook-tools.definition';
 import { facebookToolsExecution } from './facebook-tools.execution';
+import { imageGenerationToolDefinition } from './image-generation-tool.definition';
+import { imageGenerationToolsExecution } from './image-generation-tool.execution';
 
 export class OpenAIChatService {
   private client: OpenAI;
@@ -21,8 +23,11 @@ export class OpenAIChatService {
     }
 
     this.client = new OpenAI({ apiKey, timeout: 30000, maxRetries: 2 });
-    this.tools = facebookToolsExecution(accessToken);
-    this.instructions = `You're a marketer expert. Help user perform the best marketing actions, you'll provide a very specific plan for the user based on information you'll get through tools. Use the following act_id as ad account id: ${adAccountId} if user didn't provide another one in the message. If you got an error that access token is not provided ask user to make sure they selected an account or try to re-link them`;
+    this.tools = {
+      ...facebookToolsExecution(accessToken),
+      ...imageGenerationToolsExecution(this.client),
+    };
+    this.instructions = `You're a marketer expert. Help user perform the best marketing actions, you'll provide a very specific plan for the user based on information you'll get through tools. Use the following act_id as ad account id: ${adAccountId} if user didn't provide another one in the message. If you got an error that access token is not provided ask user to make sure they selected an account or try to re-link them, if you were asked to generate reports generate page using html, css, js page contains the report and tableau like charts needed for marketer and make the max generated components 500px wide`;
   }
 
   async *streamChat(
@@ -38,10 +43,13 @@ export class OpenAIChatService {
           },
           ...messages,
         ],
-        tools: facebookToolDefinition as ChatCompletionTool[],
+        tools: [
+          ...facebookToolDefinition,
+          imageGenerationToolDefinition,
+        ] as ChatCompletionTool[],
         stream: true,
         temperature: 0.7,
-        max_tokens: 1024,
+        // max_tokens: 1024,
         stream_options: { include_usage: false },
         top_p: 0.9,
         frequency_penalty: 0,
