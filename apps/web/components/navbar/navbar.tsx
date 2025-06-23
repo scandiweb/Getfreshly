@@ -28,7 +28,6 @@ import Link from 'next/link';
 import Logo from '@/assets/logo.png';
 import { ThemeToggle } from '@/components/themeToggle';
 import { UserIcon } from '@/components/userIcon';
-import { SettingsDropdown } from '@/components/settings';
 
 interface MenuItem {
   title: string;
@@ -150,7 +149,6 @@ export function Navbar() {
           <div className="flex flex-row items-center gap-4">
             <ThemeToggle />
             <UserIcon />
-            <SettingsDropdown />
           </div>
         </nav>
 
@@ -168,7 +166,6 @@ export function Navbar() {
               />
             </Link>
             <div className="flex items-center gap-2">
-              <SettingsDropdown />
               <Sheet>
                 <SheetTrigger asChild>
                   <Button variant="outline" size="icon">
